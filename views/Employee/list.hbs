@@ -1,0 +1,180 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="#" class="curr_page">
+                <i class='bx bxs-user' style="color:black"></i>
+                <spam class="links_name color" style="color:Black">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        {{!-- <li style="margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li> --}}
+
+        {{!-- <li style="margin-top: 10px;">
+
+            <a href="/setting">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">settings</spam>
+            </a>
+        </li> --}}
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+    <table class="table table-striped  emp_teable" style="margin-top: 20px; ">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col">
+                    <h3 style="text-align: end">Employee List</h3>
+                </th>
+                <th scope="col" style="text-align: end"> <button type="button" class="btn btn-info "><a href="/addcust"
+                            style="color: #fff;">
+                            <h4>+ Add New</h4>
+                        </a></button></th>
+
+            </tr>
+        </thead>
+
+    </table>
+
+
+    <div class="col-auto">
+        <div class="form-row">
+            <div class="col-md-3 mb-3">
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+                    
+
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by name"
+                        title="Type in a name" class="form-control">
+                        <div class="input-group-prepend"></div>
+                        <div class="input-group-text" style="background-color: #fff;"><i class="fas fa-search"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-striped" id="myTable" style="margin-left:15%;">
+
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">FullName</th>
+                {{!-- <th scope="col"></th> --}}
+                <th scope="col">Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">City</th>
+                <th scope="col">Pen card</th>
+                <th scope="col">Aadhaar card</th>
+                <th scope="col">Empid</th>
+                <th scope="col" style="text-align: center;">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each list}}
+            <tr>
+                <td style="text-transform: capitalize;">{{this.fullName}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.mobile}}</td>
+                <td style="text-transform: capitalize;">{{this.city}}</td>
+                <td>AAAAA888A</td>
+                <td>0000 1111 2222</td>
+                <td>{{this.empid}}</td>
+                <td style="text-align: center;">
+                    {{!-- <a href="/employee/{{employee._id}}">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a> --}}
+                    <a href="/employee/delete/{{this._id}}"
+                        onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash"
+                            style="color: grey;" aria-hidden="true"></i></a>
+                    <a href="/employeedit/{{this._id}}">
+                        <i class="fas fa-edit" style="color:grey;"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[0];
+                td2 = tr[i].getElementsByTagName("td")[1];
+                td3 = tr[i].getElementsByTagName("td")[2];
+                td4 = tr[i].getElementsByTagName("td")[3];
+              //  td5 = tr[i].getElementsByTagName("td")[4];
+                if (td1 || td2 || td3 || td4 ) {
+                    txtValue1 = td1.textContent || td1.innerText;
+                    txtValue2 = td2.textContent || td2.innerText;
+                    txtValue3 = td3.textContent || td3.innerText;
+                    txtValue4 = td4.textContent || td4.innerText;
+                    
+                    if ((txtValue1.toUpperCase().indexOf(filter) > -1) || (txtValue2.toUpperCase().indexOf(filter) > -1) 
+                    ||  (txtValue3.toUpperCase().indexOf(filter) > -1) || (txtValue4.toUpperCase().indexOf(filter) > -1)) {
+                        tr[i].style.display = "";
+                    } else {
+
+                        tr[i].style.display = "none";
+
+                    }
+                }
+            }
+        }
+    </script>

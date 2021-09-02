@@ -1,0 +1,61 @@
+{{!-- {{> header}} --}}
+{{!-- <div class="container">
+ ...
+</div> --}}
+{{!-- {{> footer}} --}}
+
+
+ <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
+          
+          {{!-- <h1>{{error.arr}}</h1> --}}
+          <!-- Icon -->
+          <div class="fadeIn first">
+            <img src="tathastuLogo.png" id="icon" alt="User Icon" style="width:400px;height:150px;" />
+          </div>
+      
+          <!-- Login Form -->
+          <form action="/login" method="POST" onsubmit="return validation()"  >
+            <input type="text" id="login" class="fadeIn second inputext" name="email" placeholder="login">
+              <div>
+                 <span class="text-danger" name="login_error" id="login_error"></span>
+               </div>
+            <input type="text" id="password" class="fadeIn third inputext" name="password" placeholder="password">
+             <div>
+                 <span class="text-danger" name="password_error" id="password_error"></span>
+               </div>
+            <input type="submit" class="fadeIn fourth" value="Log In">
+          </form>
+      
+          <!-- Remind Passowrd -->
+          {{!-- <div id="formFooter">
+            <a class="underlineHover" href="/password" type="hidden">Forgot Password?</a> <br/>
+
+
+          </div>
+       --}}
+        </div>
+      </div>
+      {{!-- {{> footer}} --}}
+
+      <script>
+        function validation(){
+            var login = document.getElementById('login').value;
+            var password = document.getElementById('password').value;
+            
+
+            if(login == ""){
+                document.getElementById('login_error').innerHTML ="please enter the email id";
+                return false;
+            }
+
+            if(password == ""){
+                document.getElementById('password_error').innerHTML ="please enter the password id";
+                return false;
+            }
+
+            
+
+        }
+      </script>

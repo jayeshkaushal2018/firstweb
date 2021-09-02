@@ -1,0 +1,856 @@
+{{>header}}
+
+<div class="sidebar active">
+	<div class="logo_content">
+		<div class="logo">
+			<box-icon type='solid' name='home'></box-icon>
+			<i class='bx bxs-home'></i>
+			<div class="logo_name">Tathastu Interio</div>
+		</div>
+		<i class='bx bx-menu' id="btn"></i>
+	</div>
+	<ul class="nav_list">
+		<li>
+			<a href="/dashboard">
+				<i class='bx bx-grid-small'></i>
+				<spam class="links_name">Dashboard</spam>
+			</a>
+		</li>
+		<li style="margin-top: 10px;">
+			<a href="/employee/list">
+				<i class='bx bxs-user'></i>
+				<spam class="links_name color">Employees</spam>
+			</a>
+		</li>
+		<li style="; margin-bottom: 10px;">
+			<a href="/lead" class="curr_page" style="margin-top: 10px;">
+				<i class='bx bx-grid-small' style="color:black"></i>
+				<spam class="links_name" style="color:Black; ">Leads</spam>
+			</a>
+		</li>
+		{{!-- <li style="margin-top: 10px;">
+			<a href="/project">
+				<i class='bx bx-grid-small'></i>
+				<spam class="links_name">projects</spam>
+			</a>
+		</li> --}}
+
+		{{!-- <li style="margin-top: 10px;">
+
+			<a href="/setting">
+				<i class='bx bx-grid-small'></i>
+				<spam class="links_name">settings</spam>
+			</a>
+		</li> --}}
+		<li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+			<form action="/">
+				<select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+					class="form-control selectpicker" style="color: white;background-color: black;">
+					<option value="">Settings</option>
+					<option value="/passwordReset">Password Reset</option>
+
+				</select>
+			</form>
+		</li>
+	</ul>
+	<div class="profile_content">
+		<div class="profile">
+			<div class="profile_details">
+				<!-- <img src="profile.jpg" alt=""> -->
+				<div class="name_job">
+					<div class="name">jayesh kaushal</div>
+					<div class="job"> web Designed</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+{{!-- <div class="container">
+	<table class="table table-dark" style="text-align: center;margin-top:2%;">
+		<thead>
+			<tr>
+				<th scope="col">
+					<h3><b>Customer from</b></h3>
+				</th>
+			</tr>
+		</thead>
+	</table>
+	<form class="leadform" style="padding-bottom:10px;padding-right:20px;padding-left:10px;margin-bottom:120px">
+		<div class="form-group row" style="padding-top: 20px;">
+			<label for="inputEmail3" class=" col-sm-2 col-form-label label-text" name="cust_name">
+				<h4> Fullname </h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="cust_name" name="cust_name" placeholder="Full name">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>Phone</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>City</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="city" name="city" placeholder="city">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>Budget</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="budget" name="budget" placeholder="budget">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>Enqiury</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="enqiury" name="enqiury" placeholder="Enqiury">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>Email</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" id="email" name="email" placeholder="email">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label label-text">
+				<h4>Address</h4>
+			</label>
+			<div class="col-sm-10">
+				<textarea type="text" class="form-control" id="address" name="address" placeholder="address"
+					rows="3"></textarea>
+			</div>
+		</div>
+
+		<div class=" form-row">
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>Type of property</h4>
+				</label>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>Type of room</h4>
+				</label>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>Status of properties</h4>
+				</label>
+			</div>
+		</div>
+
+		<div class=" form-row">
+			<div class="form-group col-md-4">
+				<select id="service" class="form-control">
+					<option selected>Choose...</option>
+					<option>Flat</option>
+					<option>Villa</option>
+					<option>Commercial</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<select id="service" class="form-control">
+					<option selected>Choose...</option>
+					<option>1BHK</option>
+					<option>2BHK</option>
+					<option>3BHK</option>
+					<option>Flat</option>
+				</select>
+			</div>
+			<div class="form-group col-md-4">
+				<select id="service" class="form-control">
+					<option selected>Choose...</option>
+					<option>NEW property</option>
+					<option>OLD property</option>
+					<option>Renovation</option>
+				</select>
+			</div>
+		</div>
+		<div class=" form-row">
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>last follow up</h4>
+				</label>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>next follow up</h4>
+				</label>
+			</div>
+			<div class="form-group col-md-4">
+				<label for="inputPassword3" class="label-text">
+					<h4>when the service wanted</h4>
+				</label>
+			</div>
+		</div>
+		<div class=" form-row">
+			<div class="form-group col-md-4">
+				<input type="date" class="form-control" id="follow_last" name="follow_last" placeholder="follow_last">
+			</div>
+			<div class="form-group col-md-4">
+				<input type="date" class="form-control" id="follow_next" name="follow_next" placeholder="follow_next">
+			</div>
+			<div class="form-group col-md-4">
+				<input type="date" class="form-control" id="when_needed" name="when_needed" placeholder="when_needed">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class=" col-form-label label-text">
+				<h4>Floor plane</h4>
+			</label>
+			<div class="col-sm-10">
+				<input type="file" class="form-control" id="Floor_plane" name="Floor_plane" placeholder="Floor_plane">
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</div>
+	</form>
+
+</div> --}}
+
+<div class="container">
+
+	<form class="well form-horizontal" action="/leadedit/update" method="POST" id="contact_form"
+		style="background-color:#dddcdc ;margin-top: 40px;padding-top: 40px;padding-right: 100px;border-radius:5px;margin-right:20px;margin-bottom:20px;">
+		<fieldset>
+
+			<!-- Form Name -->
+			<legend>
+				<center>
+					<h1><b>Lead Edit Form</b></h1>
+				</center>
+			</legend><br>
+
+			<!-- Text input-->
+			<input class="form-control" id="cust_name" name="id" type="hidden" aria-label="Fullname"
+				value="{{Lead._id}}" aria-describedby="basic-addon1">
+
+
+			<div class="form-group row row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Fullname</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-user fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input type="text" class="form-control" placeholder="Fullname" id="cust_name" name="cust_name"
+							aria-label="Fullname" value="{{Lead.cust_name}}" aria-describedby="basic-addon1">
+					</div>
+				</div>
+				{{!-- <div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text" id="basic-addon1">@</span>
+					</div>
+					<input type="text" class="form-control" placeholder="Username" aria-label="Username"
+						aria-describedby="basic-addon1">
+				</div> --}}
+			</div>
+
+			<!-- Text input-->
+
+			<div class="form-group row row ">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Phone</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					{{!-- <div class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+						<input name="last_name" placeholder="Last Name" class="form-control" type="email">
+					</div> --}}
+					<div class="input-group">
+						{{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-phone fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input type="text" name="phone" class="form-control" value="{{Lead.phone}}" placeholder="Phone"
+							aria-label="Username" aria-describedby="basic-addon1">
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>City</b></h4>
+				</label>
+				<div class="col-md-7 selectContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-plane fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <select name="department" class="form-control selectpicker">
+							<option value="">Select your Department/Office</option>
+							<option>Department of Engineering</option>
+							<option>Department of Agriculture</option>
+							<option>Accounting Office</option>
+							<option>Tresurer's Office</option>
+							<option>MPDC</option>
+							<option>MCTC</option>
+							<option>MCR</option>
+							<option>Mayor's Office</option>
+							<option>Tourism Office</option>
+						</select> --}}
+						<input name="city" class="form-control" value="{{Lead.city}}" type="text" placeholder="city">
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Budget</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-credit-card fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="budget" placeholder="budget of customer" value="{{Lead.budget}}"
+							class="form-control" type="text">
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Enqiury</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-question-circle fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="enqiury" placeholder="enqiury" value="{{Lead.enqiury}}" class="form-control"
+							type="text">
+					</div>
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Status of Project</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-building fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="project_status" class="form-control selectpicker">
+							<option selected value="{{Lead.project_status}}">{{Lead.project_status}}</option>
+							<option value="open">Open</option>
+							<option value="complete">Complete</option>
+							<option value="closed">Closed</option>
+							<option value="progress">Progress</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>E-Mail@</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-envelope fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="email" placeholder="customer email" value="{{Lead.email}}" class="form-control"
+							type="email">
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Address</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-address-book fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="address" placeholder="Customer address " value="{{Lead.address}}"
+							class="form-control" type="text">
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Text input-->
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>EContact No.</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+						--}}
+						<span class="input-group-text" id="basic-addon1">
+							<i class="fa fa-envelope fa-1x" style="background: white;"></i>
+						</span>
+						<input name="econtact" placeholder="another email address of customer" value="{{Lead.econtact}}"
+							class="form-control" type="email">
+					</div>
+				</div>
+			</div>
+
+
+
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Property Type</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-address-book fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="customer_property" class="form-control selectpicker">
+							<option selected value="{{Lead.customer_property}}">{{Lead.customer_property}}</option>
+							<option value="Flat">Flat</option>
+							<option value="Villa">Villa</option>
+							<option value="Commercial">Commercial</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Property Room</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-home fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="no_room" class="form-control selectpicker">
+							<option selected value="{{Lead.no_room}}">{{Lead.no_room}}</option>
+							<option value="1BHK">1BHK</option>
+							<option value="2BHK">2BHK</option>
+							<option value="3BHK">3BHK</option>
+							<option value="Flat">Flat</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Status of properties</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-building fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="property_status" class="form-control selectpicker">
+							<option value="{{Lead.property_status}}" selected>{{Lead.property_status}}</option>
+							<option value="NEWproperty">NEW property</option>
+							<option value="OLDproperty">OLD property</option>
+							<option value="Renovation">Renovation</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Select Basic -->
+
+			<!-- Success message -->
+			{{!-- <div class="alert alert-success" role="alert" id="success_message">
+				<h4 style="text-align: right;"><b>Success </b></h4><i class="glyphicon glyphicon-thumbs-up"></i>
+				Success!.
+			</div> --}}
+
+			<!-- Button -->
+
+			{{!-- <div class="form-group row">
+				<label class="col-md-5 control-label">
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						<p>{{Lead.follow_last}}</p>
+						
+					</div>
+				</div>
+			</div>
+			<script>
+				let fir = "hi";
+			</script> --}}
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Last follow up</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-calendar fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="follow_last" class="form-control" value="{{emp.fullName}}" type="date"
+							value="{{Lead.follow_last}}"> --}}
+						{{!-- <select id="service" class="form-control">
+							<option value={{emp.fullName}}>{{emp.fullName}}</option>
+
+						</select> --}}
+						<input name="follow_last" id="follow_last" class="form-control" type="date">
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Employee last follow</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-user fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="follow_last_person" class="form-control" type="text"
+							value="{{Lead.follow_last_person}}"> --}}
+						{{!-- <select name="follow_last_person" class="form-control selectpicker">
+							{{#each emp}}
+							<option>{{this.fullName}}</option>
+							{{/each}}
+						</select> --}}
+						<select class="js-example-basic-multiple select2 form-control" name="follow_last_person"
+							id="follow_last_person" multiple="multiple">
+
+							{{#each emp}}
+							<option value="{{this.fullName}}">{{this.fullName}}</option>
+							{{/each}}
+
+						</select>
+
+						{{!-- <select id="service" class="form-control">
+							<option selected>Present status of customer properties...</option>
+							<option>NEW property</option>
+							<option>OLD property</option>
+							<option>Renovation</option>
+						</select> --}}
+					</div>
+				</div>
+			</div>
+			{{!-- <div class="form-group row">
+				<label class="col-md-5 control-label">
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						<p>{{Lead.follow_next}}</p>
+					</div>
+				</div>
+			</div> --}}
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Next follow up</b></h4>
+				</label>
+
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-calendar fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <p id="demo"></p> --}}
+						{{!-- <input name="follow_next" id="follow_next" value="{{Lead.follow_next}}"
+							class="form-control" type="date"> --}}
+						<input name="follow_next" id="follow_next" value="{{Lead.follow_next}}" class="form-control"
+							type="date">
+
+						{{!-- <select id="service" class="form-control">
+							<option selected>Present status of customer properties...</option>
+							<option>NEW property</option>
+							<option>OLD property</option>
+							<option>Renovation</option>
+						</select> --}}
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Employee Next follow</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-user fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="follow_next_person" value="{{Lead.follow_next_person}}" class="form-control"
+							type="text" placeholder="employee name  will follow the next"> --}}
+						{{!-- <select name="follow_last_person" class="form-control selectpicker">
+							{{#each emp}}
+							<option>{{this.fullName}}</option>
+							{{/each}}
+						</select> --}}
+						{{!-- <select id="service" class="form-control">
+							<option selected>Present status of customer properties...</option>
+							<option>NEW property</option>
+							<option>OLD property</option>
+							<option>Renovation</option>
+						</select> --}}
+						<select class="js-example-basic-multiple select2 form-control" name="follow_next_person"
+							id="follow_next_person" multiple="multiple">
+
+							{{#each emp}}
+							<option value="{{this.fullName}}">{{this.fullName}}</option>
+							{{/each}}
+
+						</select>
+					</div>
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Employee on Project</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-user fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="follow_next_person" class="form-control" type="text"
+							placeholder="employee name  will follow the next"> --}}
+						{{!-- <select id="service" class="form-control">
+							<option selected>Present status of customer properties...</option>
+							<option>NEW property</option>
+							<option>OLD property</option>
+							<option>Renovation</option>
+						</select> --}}
+						<select class="js-example-basic-multiple select2 form-control" name="emplyee_working"
+							id="emplyee_working" multiple="multiple" placeholder="this is fummy">
+
+
+							{{#each emp}}
+							<option value="{{this.fullName}}">{{this.fullName}}</option>
+							{{/each}}
+
+
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+
+			{{!-- <div class="form-group row">
+				<label class="col-md-5 control-label">
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						<p>{{Lead.service_wanted}}</p>
+					</div>
+				</div>
+			</div> --}}
+
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>When the service wanted</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-calendar fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="service_wanted" id="service_wanted" class="form-control" type="date">
+						{{!-- <select id="service" class="form-control">
+							<option selected>Present status of customer properties...</option>
+							<option>NEW property</option>
+							<option>OLD property</option>
+							<option>Renovation</option>
+						</select> --}}
+					</div>
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+			<div class="form-group row">
+				<label class="col-md-5 control-label"></label>
+				<div class="col-md-7"><br>
+					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+						class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>Edit</b> <span
+							class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+<script>
+	$('.js-example-basic-multiple').select2();
+	// $("#emplyee_working").val(['rrahit@gmail.com']).change();
+	//$('#emplyee_working').val(["rrahit@gmail.com","mark sharma"]).trigger('change')
+	var work_person = '{{Lead.emplyee_working}}';
+	var next_person = '{{Lead.follow_next_person}}';
+	var last_person = '{{Lead.follow_last_person}}';
+	
+
+
+
+	let workers = work_person && work_person.split(',');
+	let next = next_person && next_person.split(',');
+	let last = last_person && last_person.split(',');
+	let date_today = '02/06/2021';
+
+	$('#emplyee_working').val(workers).trigger('change');
+	$('#follow_next_person').val(next).trigger('change');
+	$('#follow_last_person').val(last).trigger('change');
+
+
+	//console.log($work_person);
+	//Converting the general date formate into dd/mm/yyyy formate
+	//var service_wanted_date = '{{service_wanted}}';
+	//alert(service_wanted_date);
+
+	var options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+
+	var date_last = new Date('{{Lead.follow_last}}');
+	var date_next = new Date('{{Lead.follow_next}}'); 
+	var date_servcie = new Date('{{Lead.service_wanted}}'); 
+
+	let dd = ("0" + date_last.getDate()).slice(-2);
+	let l_dd = ("0" + date_next.getDate()).slice(-2);
+	let s_dd = ("0" + date_servcie.getDate()).slice(-2);
+
+	let mm = ("0" + (date_last.getMonth() + 1)).slice(-2);
+	let l_mm = ("0" + (date_next.getMonth() + 1)).slice(-2);
+	let s_mm = ("0" + (date_servcie.getMonth() + 1)).slice(-2);
+
+	let yyyy = date_last.getFullYear();
+	let l_yyyy = date_next.getFullYear();
+	let s_yyyy = date_servcie.getFullYear();
+
+	let today = yyyy+"-"+(mm)+"-"+(dd) ;
+	let l_today = l_yyyy+"-"+(l_mm)+"-"+(l_dd) ;
+	let s_today = s_yyyy+"-"+(s_mm)+"-"+(s_dd) ;
+
+	$('#follow_last').val(today);
+	$('#follow_next').val(l_today);
+	$('#service_wanted').val(s_today);
+</script>

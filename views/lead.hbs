@@ -1,0 +1,455 @@
+{{>header}}
+<script>
+    window.Handlebars.registerHelper('select', function (value, options) {
+        var $el = $('<select />').html(options.fn(this));
+        $el.find('[value="' + value + '"]').attr({ 'selected': 'selected' });
+        return $el.html();
+    });
+</script>
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name color">Employees</spam>
+            </a>
+        </li>
+        <li style="; margin-bottom: 10px;">
+            <a href="#" class="curr_page" style="margin-top: 10px;">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:Black; ">Leads</spam>
+            </a>
+        </li>
+        {{!-- <li style="margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li> --}}
+
+        {{!-- <li style="margin-top: 10px;">
+
+            <a href="/setting">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">settings</spam>
+            </a>
+        </li> --}}
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+    <table class="table table-striped  emp_teable" style="margin-top: 20px">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col">
+                    <h3 style="text-align: end;">Lead List</h3>
+                </th>
+                <th scope="col" style="text-align: end"> <button type="button" class="btn btn-info "><a
+                            href="/insertlead" style="color: #fff;">
+                            <h4>+ Add New</h4>
+                        </a></button></th>
+
+
+            </tr>
+        </thead>
+
+    </table>
+    <div class="col-auto">
+        <div class="form-row">
+            <div class="col-md-3 mb-3"></div>
+            <div class="col-md-6 mb-3">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2" style="margin-left: 250px;">
+
+
+                    <input type="text" id="myInput"  onkeyup="myFunction()" placeholder="Search by name" title="Type in a name" class="form-control">
+                    <div class="input-group-prepend"></div>
+                    <div class="input-group-text" style="background-color: #fff;"><i class="fas fa-search"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        </div>
+    </div>
+</div>
+
+<table class="table table-striped  emp_table " style="width: 2000px; margin-left: 15%;" id="myTable">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Customer Details</th>
+            {{!-- <th scope="col">Contact</th> --}}
+            {{!-- <th scope="col">City</th> --}}
+            <th scope="col">Email</th>
+            <th scope="col">Budget</th>
+            <th scope="col">Enquiry</th>
+
+            {{!-- <th scope="col">Type of propertie</th> --}}
+            <th scope="col">Type Of Room</th>
+            <th scope="col">Status Of Properties</th>
+            <th scope="col">Type Of Property</th>
+            <th scope="col">Last Follow Up</th>
+            <th scope="col">Next Follow Up</th>
+            <th scope="col">When the Service Wanted</th>
+            <th scope="col">Employee add</th>
+            <th scope="col">Status of project</th>
+            <th scope="col">next person to follow</th>
+            <th scope="col">last Person Follow</th>
+            <th scope="col">Send the message</th>
+            {{!-- <th scope="col">Testing</th> --}}
+            <th scope="col" style="width: 150px;text-align: center;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{!-- <tr>
+
+            <td>Rajesh sharma </td>
+            <td>9826088011</td>
+            <td>indore</td>
+            <td>2,00000</td>
+            <td>painting</td>
+            <td>rajeshsharna@gmail.com</td>
+            <td>53/2 vjaya nagar indore</td>
+            <td>commerical</td>
+            <td>2BHK</td>
+            <td>OLD property</td>
+            <td>07/24/2021</td>
+            <td>07/26/2021</td>
+            <td>10/02/2021</td>
+            <td style="text-align: center ;">
+            <td>
+                <a href="/employee/{{employee._id}}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+            <td>
+                <a href="#">
+                    <button type="button" class="btn btn-success">Edit</button>
+                </a>
+            </td>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>raju verma </td>
+            <td>9826088012</td>
+            <td>ujjain</td>
+            <td>5,00000</td>
+            <td>renovation</td>
+            <td>rajuverma@gmail.com</td>
+            <td>473/2 gandhi nagar ujjain</td>
+            <td>commerical</td>
+            <td>5BHK</td>
+            <td>OLD property</td>
+            <td>06/24/2021</td>
+            <td>06/26/2021</td>
+            <td>10/02/2021</td>
+            <td style="text-align: center ;">
+            <td>
+                <a href="/employee/{{employee._id}}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+            </td>
+            <td>
+                <a href="#">
+                    <button type="button" class="btn btn-success">Edit</button>
+                </a>
+            </td>
+            </td>
+
+
+
+        </tr> --}}
+        {{!-- <tr>
+
+            <td>rahul</td>
+            <td>9826088013</td>
+            <td>design</td>
+            <td>confirm</td>
+            <td>johni</td>
+            <td>emp8</td>
+            <td>
+
+                <a href="/editEmp">
+                    <i class='bx bxs-edit'></i></a>
+                </i> &nbsp;
+                <i class='bx bxs-x-circle'></i>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>sonali</td>
+            <td>9826088014</td>
+            <td>design</td>
+            <td>confirm</td>
+            <td>jayant</td>
+            <td>emp9</td>
+            <td>
+
+                <a href="/editEmp">
+                    <i class='bx bxs-edit'></i></a>
+                </i> &nbsp;
+                <i class='bx bxs-x-circle'></i>
+            </td>
+
+        </tr>
+        <tr>
+
+            <td>ramesh</td>
+            <td>9826088015</td>
+            <td>design</td>
+            <td>calling</td>
+            <td>mark</td>
+            <td>emp6</td>
+            <td>
+
+                <a href="/editEmp">
+                    <i class='bx bxs-edit'></i></a>
+                </i> &nbsp;
+                <i class='bx bxs-x-circle'></i>
+            </td> --}}
+
+
+            {{!-- {{#each lead}}
+        <tr>
+            <td>{{this.cust_name}}</td>
+            <td>{{this.contact}}</td>
+            <td>{{this.enquiry}}</td>
+            <td>{{this.action}}</td>
+            <td>{{this.assigned_ID}}</td>
+            <td>{{this.assigned_emp}}</td>
+            <td>{{this.Status}}</td>
+            <td>{{this.Status}}</td>
+            <td>{{this.Status}}</td>
+            <td>{{this.Status}}</td>
+            <td>{{this.Status}}</td>
+            <td></td>
+            <td style="text-align: center;">
+                <a href="/employee/{{employee._id}}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a>
+                <a href="#">
+                    <button type="button" class="btn btn-success">Edit</button>
+                </a>
+            </td>
+        </tr>
+        {{/each}} --}}
+
+        {{#each lead}}
+        <tr>
+
+            <td style="text-transform: capitalize;">{{this.cust_name}}<br />{{this.phone}}<br />{{this.city}}</td>
+            <td>{{this.email}}</td>
+            <td style="text-transform: capitalize;">{{this.budget}}</td>
+            <td style="text-transform: capitalize;">{{this.enqiury}}</td>
+            <td>{{this.customer_property}}</td>
+            <td>{{this.property_status}}</td>
+            <td>{{this.no_room}}</td>
+            {{!-- <td>status of properties</td> --}}
+            <td>{{this.follow_last}}</td>
+            <td>{{this.follow_next}}</td>
+            <td>{{this.service_wanted}}</td>
+            <td style="text-transform: capitalize;">{{this.emplyee_working}}</td>
+            <td style="text-transform: capitalize;">{{this.project_status}}</td>
+            <td style="text-transform: capitalize;">{{this.follow_next_person}}</td>
+            <td style="text-transform: capitalize;">{{this.follow_last_person}}</td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-comment fa-lg" aria-hidden="true"></i> SMS</button></td>
+            {{!-- <td><button  type="button"   class="btn btn-primary openBtn" data-toggle="modal" data-target="#example" >this is it</button> --}}
+            
+            <td style="text-align: center;">
+                {{!-- <a href="/employee/{{employee._id}}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a> --}}
+                <a href="/lead/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record?');">
+                    <i class="fa fa-trash fa-lg" aria-hidden="true" style="color:black;"></i>
+                </a>
+                <a href="/leadedit/{{this._id}}">
+                    <i class="fas fa-edit" style="color:black;"></i>
+                </a>
+                {{!-- <a href="/projectadd/{{this._id}}">
+                    <i class="fa fa-paper-plane" style="color:black;"></i>
+                </a> --}}
+
+            </td>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sending message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/sendMessage" method="POST">
+                            <div class="form-group">
+                                <label for="number"> Enter Number</label>
+                                <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Enter Message</label>
+                                <textarea id="message" name="message" rows="12" cols="60" style="text-transform: uppercase;">{{this._id}}Customer name : {{cust_name}}&#10; Phone : {{this.phone}}&#10;City : {{this.city}}&#10;Email : {{this.email}}&#10;Budget : {{this.budget}}&#10;Enquiry : {{this.enqiury}}&#10;Type of Room : {{this.customer_property}}&#10;Status Of Properties : {{this.property_status}}&#10;Employee working : {{this.emplyee_working}}&#10;status : {{this.project_status}}
+                             
+                               </textarea>
+                            
+
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+                </div>
+            </div>
+        </div>
+
+         <!-- Modal -->
+        <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Sending message</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/sendMessage" method="POST">
+                            <div class="form-group">
+                                <label for="number"> Enter Number</label>
+                                <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Enter Message</label>
+                                <textarea id="message" name="message" rows="12" cols="60" style="text-transform: uppercase;">
+                                    this is testing
+                                </textarea>
+                            
+
+                            </div>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+                </div>
+            </div>
+        </div>
+
+        
+
+        </tr>
+        {{/each}}
+
+    </tbody>
+</table>
+</div>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script>
+    $('.openBtn').on('click',function(){
+        $(.modal-body).load('content.html',function(){
+            $('#example').modal({show:ture});
+        })
+    })
+
+
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[0];
+            td2 = tr[i].getElementsByTagName("td")[1];
+            td3 = tr[i].getElementsByTagName("td")[2];
+            td4 = tr[i].getElementsByTagName("td")[3];
+            td5 = tr[i].getElementsByTagName("td")[4];
+            td6 = tr[i].getElementsByTagName("td")[5];
+            td7 = tr[i].getElementsByTagName("td")[6];
+            td10 = tr[i].getElementsByTagName("td")[10];
+            td11 = tr[i].getElementsByTagName("td")[11];
+            td12 = tr[i].getElementsByTagName("td")[12];
+            td13 = tr[i].getElementsByTagName("td")[13];
+
+            if (td1 || td2 || td3 || td4 || td5 || td6 || td7 || td10) {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                txtValue3 = td3.textContent || td3.innerText;
+                txtValue4 = td4.textContent || td4.innerText;
+                txtValue5 = td5.textContent || td5.innerText;
+                txtValue6 = td6.textContent || td6.innerText;
+                txtValue7 = td7.textContent || td7.innerText;
+                txtValue10 = td10.textContent || td10.innerText;
+                txtValue11 = td11.textContent || td11.innerText;
+                txtValue12 = td12.textContent || td12.innerText;
+                txtValue13 = td13.textContent || td13.innerText;
+
+                if ((txtValue1.toUpperCase().indexOf(filter) > -1) || (txtValue2.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue3.toUpperCase().indexOf(filter) > -1) || (txtValue4.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue5.toUpperCase().indexOf(filter) > -1) || (txtValue6.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue7.toUpperCase().indexOf(filter) > -1) || (txtValue10.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue11.toUpperCase().indexOf(filter) > -1) || (txtValue12.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue13.toUpperCase().indexOf(filter) > -1)
+                ) {
+                    tr[i].style.display = "";
+                } else {
+
+                    tr[i].style.display = "none";
+
+                }
+            }
+        }
+    }
+</script>

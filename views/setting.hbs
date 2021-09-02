@@ -1,0 +1,350 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li style="row_li;margin-top: 10px;">
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="row_li;margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name">Employees</spam>
+            </a>
+        </li>
+        <li style="row_li;margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        <li style="row_li;margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li>
+
+        {{!-- <li class="row_li">
+
+            <a href="#" class="curr_page" style="margin-top: 10px;margin-bottom:10px;">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name" style="color: Black;">settings</spam>
+            </a>
+        </li> --}}
+        {{!-- <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <select name="department" class="form-control selectpicker" style="color: white;background-color: black;">
+                <option>Settings</option>
+                <option> <a href="/dashboard">
+                        <i class='bx bx-grid-small'></i>
+                        <spam class="links_name">Dashboard</spam>
+                    </a></option>
+                <option>Customer profile</option>
+            </select>
+        </li> --}}
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+        <form action="/">
+            <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"  class="form-control selectpicker" style="color: white;background-color: black;" >
+                <option value="">Settings</option>
+                <option value="/passwordReset">Password Reset</option>
+                <option value="/profileSetting">Profile Reset</option>
+                
+            </select>
+        </form>
+        </li>
+
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{{!-- <div class="container"> --}}
+
+    {{!-- <h1>setting</h1> --}}
+    {{!-- <table class="table table-dark" style="text-align: center;margin-top:2%;">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <h4><b>Settings</b></h4>
+                </th>
+            </tr>
+        </thead>
+    </table>
+
+    <form class="leadform" style="padding-bottom:10px;padding-right:20px;padding-left:10px;margin-bottom:120px">
+        <div>
+            <h1 style="text-align: center; color:white;padding-top:20px"><b>Reset password</b></h1>
+        </div>
+        <div class="form-group row row" style="padding-top: 20px;">
+            <label class=" col-sm-2 col-form-label label-text" name="cust_name">
+                <h4> Old PASSWORD </h4>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="OLD_pass" name="cust_name" placeholder="Old password">
+            </div>
+        </div>
+        <div class="form-group row row" style="padding-top: 20px;">
+            <label class=" col-sm-2 col-form-label label-text" name="cust_name">
+                <h4> NEW PASSWORD </h4>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="OLD_pass" name="cust_name" placeholder="New password">
+            </div>
+        </div>
+        <div class="form-group row row" style="padding-top: 20px;">
+            <label class=" col-sm-2 col-form-label label-text" name="cust_name">
+                <h4> CONFIRM PASSWORD </h4>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="conf_pass" name="cust_name" placeholder="Confirm password">
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="form-group row row" style="border-radius: ;">
+            <div class="col-sm-10" style="text-align: center;">
+                <button type="submit" class="btn btn-danger"
+                    style="width: 200px;height:50px;border-radius:5% ; ">Submit</button>
+            </div>
+        </div>
+    </form> --}}
+
+
+    <div class="container">
+
+        <form class="well form-horizontal" action=" " method="post" id="contact_form"
+            style="background-color:rgb(194, 189, 189);margin-top: 40px;padding-top: 40px;padding-right: 100px;border-radius:5px;margin-right:20px;margin-bottom:20px;">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>
+                    <center>
+                        <h1><b>Employee Form</b></h1>
+                    </center>
+                </legend><br>
+
+                <!-- Text input-->
+
+                <div class="form-group row row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>First Name</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+
+
+
+                            {{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="First name" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    {{!-- <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div> --}}
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row row ">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Last Name</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        {{!-- <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="last_name" placeholder="Last Name" class="form-control" type="email">
+                        </div> --}}
+                        <div class="input-group">
+                            {{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" placeholder="Last name" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Date of join</b></h4>
+                    </label>
+                    <div class="col-md-7 selectContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-server fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            {{!-- <select name="department" class="form-control selectpicker">
+                                <option value="">Select your Department/Office</option>
+                                <option>Department of Engineering</option>
+                                <option>Department of Agriculture</option>
+                                <option>Accounting Office</option>
+                                <option>Tresurer's Office</option>
+                                <option>MPDC</option>
+                                <option>MCTC</option>
+                                <option>MCR</option>
+                                <option>Mayor's Office</option>
+                                <option>Tourism Office</option>
+                            </select> --}}
+                            <input name="date_of_join" class="form-control" type="date">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Username</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="user_name" placeholder="Username" class="form-control" type="email">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Phone</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-phone fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="email" placeholder="phone" class="form-control" type="email">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>City</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-plane fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="confirm_password" placeholder="City" class="form-control" type="city">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>E-Mail</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-envelope fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="email" placeholder="E-Mail Address" class="form-control" type="email">
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>EContact No.</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            --}}
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-envelope fa-1x" style="background: white;"></i>
+                            </span>
+                            <input name="contact_no" placeholder="customer email" class="form-control" type="email">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+
+                <!-- Success message -->
+                {{!-- <div class="alert alert-success" role="alert" id="success_message">
+                    <h4 style="text-align: right;"><b>Success </b></h4><i class="glyphicon glyphicon-thumbs-up"></i>
+                    Success!.
+                </div> --}}
+
+                <!-- Button -->
+                <div class="form-group row">
+                    <label class="col-md-5 control-label"></label>
+                    <div class="col-md-7"><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+                            class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>SUBMIT</b> <span
+                                class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div><!-- /.container -->

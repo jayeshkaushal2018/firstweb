@@ -1,0 +1,32 @@
+<h1>addcust</h1>
+<div class="container">
+<form action="/addcust" method="POST" autocomplete="off">
+    {{!-- <input type="hidden" name="_id" value="{{employee._id}}" > --}}
+    <div class="form-group">
+            <label><h3>Name</h3></label><br/>
+            <input type="text" class="form-control" name="fullName" placeholder="Fullname" style="background-color: rgb(206, 193, 175);"/>
+    </div>
+    <div class="form-group">
+            <label><h3>Requirment</h3></label><br/>
+            <input type="text" class="form-control" name="email" placeholder="email" style="background-color: rgb(206, 193, 175);" />
+    </div>
+    <div class="form-group">
+            <label><h3>Mobile</h3></label><br/>
+            <input type="text" class="form-control" name="mobile" placeholder="mobile" style="background-color: rgb(206, 193, 175);" />
+    </div>
+    <div class="form-group">
+            <label><h3>City</h3></label><br/>
+            <input type="text" class="form-control" name="city" placeholder="city" style="background-color: rgb(206, 193, 175);"/>
+    </div>
+    <div class="from-group">
+        <button type="submit" class="btn btn-info">
+            <i class="fa fa-database"></i>
+            submit
+        </button>
+        <a href="/employee/list" class="btn btn-danger">
+            <i class="fa fa-list-alt"></i>
+            view all
+        </a>
+    </div>
+</form>
+</div>

@@ -1,0 +1,39 @@
+{
+  "name": "first",
+  "version": "1.0.0",
+  "description": "this is an login form",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "jayesh kaushal",
+  "license": "ISC",
+  "dependencies": {
+    "@coreui/icons": "^2.0.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^5.0.2",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-handlebars": "^5.3.2",
+    "express-session": "^1.17.2",
+    "fastest-validator": "^1.11.1",
+    "font-awesome": "^4.7.0",
+    "glyphicons": "^0.2.0",
+    "handlebars-dateformat": "^1.1.1",
+    "handlebars-helper-ternary": "^1.0.0",
+    "handlebars-intl": "^1.1.2",
+    "handlebars-paginate": "^0.1.0",
+    "hbs": "^4.1.2",
+    "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "localStorage": "^1.0.4",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.13.2",
+    "multer": "^1.4.3",
+    "nodemon": "^2.0.12",
+    "open": "^8.2.1",
+    "select2": "^4.1.0-rc.0"
+  }
+}

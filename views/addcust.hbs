@@ -1,0 +1,477 @@
+{{>header}}
+
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list" class="curr_page">
+                <i class='bx bxs-user' style="color:black"></i>
+                <spam class="links_name color" style="color:Black">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        {{!-- <li style="margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li> --}}
+
+        {{!-- <li style="margin-top: 10px;">
+
+            <a href="/setting">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">settings</spam>
+            </a>
+        </li> --}}
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+        {{!-- <table class="table table-striped  emp_teable" style="margin-top: 20px; ">
+                    <thead class="thead-dark">
+                        
+                        <tr>
+                            <th scope="col" ><h3 style="text-align: end">Employee List</h3></th>
+                            <th scope="col" style="text-align: end"> <button type="button" class="btn btn-info "><a href="/addcust" style="color: #fff;"><h4>+ Add New</h4></a></button></th>
+                        
+                            </tr>
+                    </thead>
+            
+        </table> --}}
+
+{{!-- <div class="container">
+        <table class="table table-striped  emp_teable" style="margin-top: 20px;">
+                    <thead class="thead-dark">
+                        
+                        <tr>
+                            <th scope="col"><button type="button" class="btn btn-danger"><a href="employee/list"><h4>Back to home</h4></a></button></th>
+                            <th scope="col"><h3>ADD EMPLOYEE</h3></th></tr>
+                    </thead>
+            
+        </table>
+<div class="container table-striped" style="padding-left: 150px; width:180%;background-color: #dee2e6;"> --}}
+{{!-- <form action="/addcust" method="POST" autocomplete="off"> --}}
+    {{!-- <input type="hidden" name="_id" value="{{employee._id}}" > --}}
+    {{!-- <div class="form-group" style="padding-top: 50px;">
+            <label><h3>Full Name</h3></label><br/>
+            <input type="text" class="form-control" name="fullName" placeholder="Fullname" />
+    </div>
+    <div class="form-group">
+            <label><h3>Email</h3></label><br/>
+            <input type="text" class="form-control" name="email" placeholder="email"/>
+    </div>
+    <div class="form-group">
+            <label><h3>Mobile</h3></label><br/>
+            <input type="text" class="form-control" name="mobile" placeholder="mobile"  />
+    </div>
+    <div class="form-group">
+            <label><h3>City</h3></label><br/>
+            <input type="text" class="form-control" name="city" placeholder="city"/>
+    </div>
+    <div class="from-group" style="padding-bottom: 20px;">
+        <button type="submit" class="btn btn-info">
+            <i class="fa fa-database"></i>
+            submit
+        </button>
+        <a href="/employee/list" class="btn btn-danger">
+            <i class="fa fa-list-alt"></i>
+            view all
+        </a>
+    </div>
+</form>
+</div>
+</div> --}}
+
+    <div class="container">
+
+        <form class="well form-horizontal" 
+        action="/addcust"  
+        method="POST" 
+        id="contact_form" name="contact_form"
+            style="background-color:rgb(224, 219, 219);margin-top: 40px;padding-top: 40px;padding-right: 100px;border-radius:5px;margin-right:20px;margin-bottom:20px;"
+           {{!-- onsubmit="return validation()"  --}}
+           enctype="multipart/form-data"
+           >
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>
+                    <center>
+                        <h1><b>Employee Forms</b></h1>
+                    </center>
+                </legend><br>
+
+                <!-- Text input-->
+
+                <div class="form-group row row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>First Name</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+
+
+
+                            {{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                             </div>
+                             <div>
+                                  <span class="text-danger" name="firstname_error" id="firstname_error"></span>
+                      
+                             </div>
+                    </div>
+                    {{!-- <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">@</span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div> --}}
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row row ">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Last Name</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        {{!-- <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input name="last_name" placeholder="Last Name" class="form-control" type="email">
+                        </div> --}}
+                        <div class="input-group">
+                            {{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                            
+                        </div>
+                        <div>
+                            <span class="text-danger" name="lastname_error" id="lastname_error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Date of join</b></h4>
+                    </label>
+                    <div class="col-md-7 selectContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-server fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            {{!-- <select name="department" class="form-control selectpicker">
+                                <option value="">Select your Department/Office</option>
+                                <option>Department of Engineering</option>
+                                <option>Department of Agriculture</option>
+                                <option>Accounting Office</option>
+                                <option>Tresurer's Office</option>
+                                <option>MPDC</option>
+                                <option>MCTC</option>
+                                <option>MCR</option>
+                                <option>Mayor's Office</option>
+                                <option>Tourism Office</option>
+                            </select> --}}
+                           <input name="date_of_join"  class="form-control" type="date">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Username</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-user fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="fullName" id="fullName" placeholder="Username" class="form-control" type="text">
+                        <span id="username" class="text-danger"></span>
+                        </div>
+                          <div>
+                            <span class="text-danger" name="fullName_error" id="fullName_error"></span>
+                        </div>
+                    </div>
+                  
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Phone</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-phone fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="mobile" id="mobile" placeholder="phone" class="form-control" type="text">
+                        </div>
+                        <div>
+                            <span class="text-danger" name="mobile_error" id="mobile_error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                  <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>Pencard upload</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-file" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <input name="file" id="file" class="form-control" type="file">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>City</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-plane fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="city"  id="city" placeholder="City" class="form-control"
+                                type="text">
+                        </div>
+                          <div>
+                            <span class="text-danger" name="city_error" id="city_error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text input-->
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>E-Mail@</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                            --}}
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <i class="fa fa-envelope fa-1x" style="background: white;"></i>
+                                </span>
+                            </div>
+                            <input name="email" id="email" placeholder="E-Mail Address" class="form-control" type="email">
+                        </div>
+                          <div>
+                            <span class="text-danger" name="email_error" id="email_error"></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Text input-->
+
+                <div class="form-group row">
+                    <label class="col-md-5 control-label">
+                        <h4 style="text-align: right;"><b>EContact No.</b></h4>
+                    </label>
+                    <div class="col-md-7 inputGroupContainer">
+
+                        <div class="input-group">
+                            {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                            --}}
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-envelope fa-1x" style="background: white;"></i>
+                            </span>
+                            <input name="contact_no" id="contact_no" placeholder="customer other  email contact" class="form-control" type="email">
+                        </div>
+                         <div>
+                            <span class="text-danger" name="contact_no_error" id="contact_no_error"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Select Basic -->
+
+                <!-- Success message -->
+                {{!-- <div class="alert alert-success" role="alert" id="success_message">
+                    <h4 style="text-align: right;"><b>Success </b></h4><i class="glyphicon glyphicon-thumbs-up"></i>
+                    Success!.
+                </div> --}}
+
+                <!-- Button -->
+                <div class="form-group row">
+                    <label class="col-md-5 control-label"></label>
+                    <div class="col-md-7"><br>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+                            class="btn btn-warning button-shadow">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>SUBMIT</b> <span
+                                class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+  //  $(function(){
+  //      $("#fname_error_message").hide();
+//
+  //      var error_fname = false;
+//
+  //      $("#firstName").focusout(function(){
+  //          check_fname();
+  //      });
+//
+//
+  //  });
+  //  function check_fname(){
+  //      var pattern = /^[a-zA-Z]*$/;
+  //      var fname = $("#firstName").val();
+  //      if(pattern.test(fname) && fname !==''){
+  //          $("#fname_error_message").hide();
+  //          $("#firstName").css("border-bottom","2px solid #34F458");
+  //         // location.replace("/dashboard");
+  //      }else{
+  //          $("#fname_error_message").html("should contain only charaters");
+  //          $("#fname_error_message").show();
+  //          $("#firstName").css("border-bottom","2px solid #F90A0A");
+  //          error_fname = ture;
+  //      }
+  //  }
+//
+  //  $("#contact_form").submit(function(){
+  //      error_fname = false;
+//
+  //      check_fname();
+//
+  //      if(error_fname === false){
+  //          alert("registration sucessfull");
+  //          return true;
+  //      }
+  //  })
+        function validation(){
+            var userFirst = document.getElementById('firstName').value;
+            var userLast = document.getElementById('lastName').value;
+            var fullName = document.getElementById('fullName').value;
+            var mobile = document.getElementById('mobile').value;
+            var city = document.getElementById('city').value;
+            var email = document.getElementById('email').value;
+            var contact_no = document.getElementById('contact_no').value;
+
+            if(userFirst == ""){
+                document.getElementById('firstname_error').innerHTML ="please enter the First name";
+                return false;
+            }
+
+            
+            if(userLast == ""){
+                document.getElementById('lastname_error').innerHTML ="please enter the Last name";
+                return false;
+            }
+
+             if(fullName == ""){
+                document.getElementById('fullName_error').innerHTML ="please enter the fullname name";
+                return false;
+            }
+
+             if(mobile == ""){
+                document.getElementById('mobile_error').innerHTML ="please enter the mobile name";
+                return false;
+            }
+
+             if(city == ""){
+                document.getElementById('city_error').innerHTML ="please enter the city name";
+                return false;
+            }
+
+            if(email == ""){
+                document.getElementById('email_error').innerHTML ="please enter the email name";
+                return false;
+            }
+
+            if(contact_no == ""){
+                document.getElementById('contact_no_error').innerHTML ="please enter the email name";
+                return false;
+            }
+
+        }
+
+    </script>

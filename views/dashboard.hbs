@@ -1,0 +1,170 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="#" class="curr_page">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:black" ;>Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        {{!-- <li style="margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li> --}}
+        {{!-- <li style="margin-top: 10px;">
+
+            <a href="/setting">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">setting</spam>
+            </a>
+        </li> --}}
+                <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+        <form action="/">
+            <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"  class="form-control selectpicker" style="color: white;background-color: black;" >
+                <option value="">Settings</option>
+                <option value="/passwordReset">Password Reset</option>
+                
+            </select>
+        </form>
+        </li>
+    </ul>
+
+    <div class="profile_content">
+
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="home_content">
+
+    <div class="container">
+        <div class="row" style="margin-top: 150px;">
+          
+            <div class="column">
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                      <a href="/employee/list" style="text-decoration: none;color:black">
+                    <div class="card-header"><h3><b>Employees status</b></h3></div>
+                    <div class="card-body">
+                        <h1 class="card-title" style="text-align: center;"><b>{{obj.obj2}}</b></h1>
+                        <p class="card-text" style="text-align: center;">
+                           <b> Total no of employee </b>
+                           
+                        
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            
+
+            <div class="column">
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <a href="/lead" style="text-decoration: none;color:black">
+                    <div class="card-header"><h3 style="text-align: center;"><b>Leads status</b></h3></div>
+                    <div class="card-body">
+                        <h1 class="card-title" style="text-align: center;"><b>{{obj.obj1}}</b></h1>
+                        <p class="card-text" style="text-align: center;">
+                           <b> Total no of lead </b>
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            {{!-- <div class="column">
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <a href="/lead" style="text-decoration: none;color:black"></a>
+                    <div class="card-header"><h3 style="text-align: center;"><b>Projects status</b></h3></div>
+                    <div class="card-body">
+                        <h1 class="card-title" style="text-align: center;"><b>{{obj.obj3}}</b></h1>
+                        <p class="card-text" style="text-align: center;">
+                           <b> Total no of Project </b>
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div> --}}
+                        <div class="column">
+                <div class="card bg-light mb-3" style="max-width: 18rem;">
+                    <a href="/lead" style="text-decoration: none;color:black">
+                    <div class="card-header"><h3 style="text-align: center;"><b>Projects status</b></h3></div>
+                    <div class="card-body">
+                        <h1 class="card-title" style="text-align: center;"><b>{{obj.obj3}}</b></h1>
+                        <p class="card-text" style="text-align: center;">
+                           <b> Total no of Project </b>
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+{{!-- 
+<table class="table table-striped">
+       
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">fullName</th>
+                <th scope="col"></th>
+                <th scope="col">email</th>
+                <th scope="col">mobile</th>
+                <th scope="col">city</th>
+                <th scope="col">Empid</th>
+                <th scope="col" style="text-align: center;">Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+       {{#each list}}
+            <tr>
+                <td>{{this.fullName}}</td>
+                <td></td>
+                <td>{{this.email}}</td>
+                <td>{{this.mobile}}</td>
+                <td>{{this.city}}</td>
+                <td>{{this.empid}}</td>
+                <td style="text-align: center;">
+                    <a href="/employee/{{employee._id}}" >
+                         <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                    <a href="#">
+                        <button type="button" class="btn btn-success">Edit</button>
+                    </a>
+                </td>
+            </tr>
+        {{/each}}
+    </tbody>
+</table> --}}
+
+</div>
