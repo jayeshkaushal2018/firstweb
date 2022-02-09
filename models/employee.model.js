@@ -29,8 +29,12 @@ var employeeSchema = new mongoose.Schema({
         type: String
     },
     image: {
-        data: Buffer, 
-        contentType: String
+        // data: Buffer, 
+        // contentType: String
+        type: String
+    },
+    Aadhaar:{
+        type: String 
     }
 })
 

@@ -1,0 +1,368 @@
+{{>header}}
+<script>
+    // Material Select Initialization
+    $(document).ready(function () {
+        // $('.mdb-select').materialSelect();
+    });
+</script>
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name color">Employees</spam>
+            </a>
+        </li>
+        {{!-- <li style="; margin-bottom: 10px;">
+            <a href="/lead" class="curr_page" style="margin-top: 10px;">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name ">Leads</spam>
+            </a>
+        </li> --}}
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name color">Leads</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/venderAccount" class="curr_page">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:black" ;>Ledger</spam>
+            </a>
+        </li>
+        {{!-- <li style="margin-top: 10px;">
+            <a href="/project">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">projects</spam>
+            </a>
+        </li> --}}
+
+        {{!-- <li style="margin-top: 10px;">
+
+            <a href="/setting">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">settings</spam>
+            </a>
+        </li> --}}
+        <li class="row_li" style="margin-left: 40px; width: 250px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+    <div class="profile_content">
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+
+    <form class="well form-horizontal" action="/venderedit/update" id="contact_form"
+        style="background-color:#dddcdc ;margin-top: 40px;padding-top: 40px;padding-right: 100px;border-radius:5px;margin-right:20px;margin-bottom:20px;"
+        name="" {{!-- onsubmit="return validation()" --}} method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>
+                <center>
+                    <h1><b>Vender Form</b></h1>
+                </center>
+            </legend><br>
+			<!-- Text input-->
+
+
+            <!-- Text input-->
+            <input class="form-control" id="id" name="id" type="hidden" aria-label="Fullname"
+				value="{{data._id}}" aria-describedby="basic-addon1">
+
+
+            <div class="form-group row row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Fullname</b></h4>
+                </label>
+                <div class="col-md-7 inputGroupContainer">
+                    <div class="input-group">
+                        {{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+                        --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-user fa-1x" style="background: white;"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" value="{{data.fullName}}" id="name" name="name"
+                            aria-label="Fullname" aria-describedby="basic-addon1">
+                        <span class="text-danger" name="cust_name_error" id="cust_name_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+
+            <div class="form-group row row ">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Phone/Whatsup</b></h4>
+                </label>
+                <div class="col-md-7 inputGroupContainer">
+                 
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-phone fa-1x" style="background: white;"></i>
+                            </span>
+                        </div>
+                        <input type="text" name="mobile" id="mobile" class="form-control" placeholder="Phone"
+                            aria-label="Username" aria-describedby="basic-addon1"
+                            value="{{data.mobile}}">
+                        <span class="text-danger" name="phone_error" id="phone_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>E-Mail@</b></h4>
+                </label>
+                <div class="col-md-7 inputGroupContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-envelope fa-1x" style="background: white;"></i>
+                            </span>
+                        </div>
+                        <input name="email" id="email" placeholder="Customer email" class="form-control" type="email"
+                        value="{{data.email}}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>City</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-plane fa-1x" style="background: white;"></i>
+                            </span>
+                        </div>
+                      
+                        <input name="city" id="city" class="form-control" type="text" placeholder="City"
+                        value="{{data.city}}">
+                        <span class="text-danger" name="city" id="city"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>State</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-plane fa-1x" style="background: white;"></i>
+                            </span>
+                        </div>
+                       
+                        <input name="state" id="state" class="form-control" type="text" placeholder="State"
+                        value="{{data.state}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>GST No.</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="gstNo" id="gstNo" class="form-control" type="text" placeholder="GST. No."
+                        value="{{data.gstNo}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Firm Name</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="firmName" id="firmName" class="form-control" type="text" placeholder="Name of Firm"
+                        value="{{data.firmName}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Bank Detail</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-university" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="bankDetail" id="bankDetail" class="form-control" type="text" placeholder="Bank Detail"
+                        value="{{data.bankDetail}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Vender Type</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="venderType" id="venderType" class="form-control" type="text" placeholder="type of vender"
+                        value="{{data.venderType}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Remark</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="remark" id="remark" class="form-control" type="text" placeholder="Remark about vender"
+                        value="{{data.remark}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="form-group row">
+                <label class="col-md-5 control-label">
+                    <h4 style="text-align: right;"><b>Reference By</b></h4>
+                </label>
+                <div class="col-md-7 selectContainer">
+                    <div class="input-group">
+                        {{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                {{!-- <i class="fa fa-plane fa-1x" style="background: white;"></i> --}}
+                            </span>
+                        </div>
+                        <input name="referenceBy" id="referenceBy" class="form-control" type="text" placeholder="Reference By Vender"
+                        value="{{data.referenceBy}}">
+                        <span class="text-danger" name="city_error" id="city_error"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-md-5 control-label"></label>
+                <div class="col-md-7"><br>
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit"
+                        class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <b>SUBMIT</b> <span
+                            class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+                </div>
+            </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('.js-example-basic-multiple').select2();
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+<script>
+
+    function myFunction() {
+
+        //const test = JSON.stringify(obj);
+
+        document.getElementById("demo").innerHTML = 'test';
+
+    }
+
+
+
+
+
+
+</script>

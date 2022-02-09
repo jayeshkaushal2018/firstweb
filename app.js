@@ -243,11 +243,11 @@ app.all('/', ensureLogin('/login'), csrfProtection, home.page);
 app.get('/dashboardAjaxDataCredits', ensureLogin('/login'), csrfProtection, home.dashboardAjaxCredits);
 app.get('/dashboardAjaxDataTopProds', ensureLogin('/login'), csrfProtection, home.dashboardAjaxTopProd);
 app.get('/dashboardAjaxVendorData', ensureLogin('/login'), auth.notVendor, csrfProtection, home.dashboardAjaxVendorData);
-app.get('/dashboardAjaxShipmentStatus', ensureLogin('/login'), csrfProtection, home.dashboardAjaxShipmentStatus);
+app.get('/dashboardAjaxShipmentStdsdsdsatus', ensureLogin('/login'), csrfProtection, home.dashboardAjaxShipmentStatus);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-    log.error(req.url);
+    log.error(req.url);dd
     next(createError(404, `${req.url} not found.`));
 });
 // error handler

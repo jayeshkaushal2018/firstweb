@@ -4,7 +4,10 @@ const url = "mongodb://localhost:27017/EmployeeDB";
 
 //connect method of mongoose
 
-mongoose.connect(url,{useNewUrlParser:true,useFindAndModify: false},(err) =>{
+mongoose.connect(url,{useNewUrlParser:true,
+    useFindAndModify: true,
+    useUnifiedTopology: true
+},(err) =>{
     if(!err){
         console.log("MongoDb Connection is successful");
     }

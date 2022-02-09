@@ -1,7 +1,8 @@
 
 /* BASIC */
 /* Google Font Link */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 html {
     /* background-color: #56baed; */
@@ -206,6 +207,14 @@ html {
       -webkit-transform: none;
       transform: none;
     }
+  }
+
+  .emailhide {
+    white-space: nowrap; 
+    width: 20px; 
+    border: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   @keyframes fadeInDown {
@@ -461,6 +470,12 @@ html {
     height: 100%;
     width: calc(100% - 240px);
     left: 240px;
+}
+.home_content_ledger{
+  position: absolute;
+  height: 100%;
+  width: calc(100% - 340px);
+  left: 480px;
 }
 .nav_text{
   position: absolute;

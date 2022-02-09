@@ -1,23 +1,27 @@
 require('./config/database');
 
-const hbs = require('hbs');
+// const hbs = require('hbs');
 //  require('./config/hbs_helper');
 
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const Users = require('./models/users');
+const transaction = require('./models/transactionmodel')
 const path = require('path');
 const bcrypt = require('bcrypt');
-var localStorage = require('localStorage');
+//var localStorage = require('localStorage');
 const app = express();
+const fast2sms = require('fast-two-sms');
+require('dotenv').config();
 const mongoose = require("mongoose");
 const employeeController = require('./controller/employeeController');
 const employeemodel = require('./models/employee.model');
 const Leadlist = require('./models/list.model');
+const vender = require('./models/vendermodel');
 const Project = require('./models/project.model');
 const session = require('express-session');
-const Validator = require("fastest-validator");
+// const Validator = require("fastest-validator");
  const multer = require('multer');
 //const upload = require("express-fileupload");
 //app.use(upload());
@@ -25,7 +29,7 @@ const Validator = require("fastest-validator");
 const storage = multer.diskStorage({
     destination: './public/upload',
     filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        cb(null, file.fieldname + '-' + Date.now() +"_"+ path.extname(file.originalname));
 
     }
 });
@@ -34,17 +38,36 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage,
     //limits: { fileSize: 1000000 }
-}).single('file');
+}).single('filename');
+// }).any('filename');
+// });
+
+//aadhereImage upload in database
+
+// const aadherestorage = multer.diskStorage({                
+//     destination: './public/upload',
+//     filename: function (req, file, cb) {
+//         cb(null, file.Aadhaarfilename + '-' + Date.now()+"_"+"aadhaar" +"_"+ path.extname(file.originalname));
+
+//     }
+// });
+
+//Init Upload
+const aadhereupload = multer({
+    storage: './public/upload',
+    filename: 'filename'
+    //limits: { fileSize: 1000000 }
+}).single('Aadhaarfilename');
 
 
-const v = new Validator();
+// const v = new Validator();
 
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
 
-}))
+}));
 
 
 
@@ -126,7 +149,7 @@ app.get('/lead', async (req, res) => {
     //  });
     const _id = '60effd963c872f19e4e3ec05';
     const doc = await employeemodel.findById(_id, { 'fullName': 1 });
-    console.log(doc);
+    // console.log(doc);
 
     if (req.session.email) {
         let lead = await Leadlist.find().lean();
@@ -139,7 +162,7 @@ app.get('/lead', async (req, res) => {
 
         })
 
-        console.log(lead);
+        // console.log(lead);
         res.render('lead', {
             lead
         });
@@ -270,15 +293,49 @@ app.use(bodyParser.urlencoded({
 // app.use(bodyParser.json());
 // app.get('/dashboard', (req, res) => {
 //     res.render('dashboard');
-// });
+// })
 
 app.get('/password', (req, res) => {
     res.render('password');
 });
 
+app.get('/venderedit',(req,res) =>{
+    res.render('venderedit');
+})
+
+app.get('/ledger', (req, res) => {
+    res.render('ledger');
+});
+
+app.get('/addEntryVender',(req,res)=>{
+    res.render('addEntryVender');
+})
+
+app.get('/customerAccount', (req, res) => {
+    res.render('customerAccount');
+});
+
+app.get('/venderAccount', (req, res) => {
+    res.render('venderAccount');
+});
+app.get('/addVenderAccount', (req, res) => {
+    res.render('addVenderAccount');
+});
+
 app.get('/editEmp', (req, res) => {
     res.render('editEmp');
 })
+app.get('/addCustomerAccount',async (req, res) => {
+
+    let list = await Leadlist.find().lean();
+    // console.log(list.cust_name);
+
+    res.render('addCustomerAccount',{
+        list
+    });
+})
+
+
 app.get('/addcust', (req, res) => {
     if (req.session.email) {
         res.render('addcust');
@@ -332,6 +389,9 @@ app.post('/passwordReset', async (req, res) => {
 app.get('/employeedit', (req, res) => {
     res.render('employeedit');
 })
+app.get('/customerAccountDisplay',(req,res)=>{
+    res.render('customerAccountDisplay');
+})
 
 // app.get('/addOrEdit', (req, res) => {
 //     res.render('Employee/addOrEdit');
@@ -360,6 +420,21 @@ app.get('/leadedit', (req, res) => {
 
 // });
 
+app.post('/sendMessage', async (req,resp)=>{
+
+    console.log("send message work");
+    let test = req.body.numbers;
+    let message = req.body.message;
+    console.log(test);
+    console.log(message);
+
+    var options = {authorization : process.env.API_KEY , message : req.body.message ,  numbers : [req.body.numbers]} ;
+    const response = await fast2sms.sendMessage(options);
+
+    resp.redirect('/lead');
+
+})
+
 app.post('/login', jsonParser, async (req, resp) => {
     // User.findOne({ email: req.body.email }).then((data) => {
 
@@ -371,7 +446,7 @@ app.post('/login', jsonParser, async (req, resp) => {
 
     var results = await Users.findOne({ email: req.body.email }, {});
     // var error = {arr :"password or email having error"};
-    console.log(results);
+    console.log("vivek");
     if (results) {
         var check = await bcrypt.compare(req.body.password, results.password)
         if (check) {
@@ -405,7 +480,7 @@ app.post('/login', jsonParser, async (req, resp) => {
     // }
     else {
         console.log("not fine");
-        console.log("decrypted" + decrypted);
+        // console.log("decrypted" + decrypted);
         console.log("password " + req.body.password);
     }
 
@@ -450,6 +525,51 @@ app.get('/project/delete/:id', (req, res) => {
             console.log('Error while deleting', err)
         }
     });
+})
+
+app.get('/venderaccount/:id', async(req, res) => {
+    let  sort = { date: -1, };
+    let id = { debitFrom: req.params.id };
+    console.log(id);
+    let transact =  await transaction.find().sort(sort).lean();
+  
+      await  vender.findById(req.params.id, async (err, data) => {
+            console.log(transact);
+           
+           
+            if (!err) {
+
+                res.render("venderaccount", {
+                    data,
+                    transact
+                })
+            }
+        }).lean();
+   
+})
+
+app.get('/addtest', async (req, res) => {
+
+
+    const doc = new transaction();
+    // doc.transactionId = 1;
+    // doc.currtBalancecredit = 250;
+    // doc.currtBalanceDebit =150;
+    // doc.updateBalancecredit = 350;
+    // doc.updateBalanceDebit = 50;
+    // doc.amount = 100;
+    doc.debitFrom = "618cf7778c5c0c2e382c8498";
+    // doc.debiterName = "jayant";
+    // doc.crediterName = "jayesh"
+    // doc.creditTo = "618cf7778c5c0c2e382c8480";
+    // await doc.save();
+
+
+    let  sort = { date: -1, };
+    let add = await  transaction.find({ debitFrom: doc.debitFrom }).sort(sort).lean();
+    console.log(add);
+ 
+
 })
 
 app.get('/employeedit/:id', async (req, res) => {
@@ -608,24 +728,20 @@ app.get('/projectadd/:id', async (req, res) => {
 app.post('/leadedit/update', async (req, res) => {
 
 
-    // Project.findByIdAndDelete(req.params.id, (err, doc)=>{
-    //     if(!err){
-    //         res.redirect('/project');            
-    //     } else {
-    //         console.log('Error while deleting', err)
-    //     }
-    // });
-    // let lead = await employeemodel.find().lean();
-    // let Lead = await  Leadlist.findOne({ id: req.body.id }).lean();
-
-    // console.log(Lead);
-
     Leadlist.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, (err, doc) => {
         if (!err) { res.redirect('/lead') };
     }).lean();
-    // res.render('leadedit', {
-    //     Lead
-    // });
+   
+});
+
+app.post('/venderedit/update', async (req, res) => {
+
+console.log(req.body);
+
+    vender.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, (err, doc) => {
+        if (!err) { res.redirect('/venderAccount') };
+    }).lean();
+  
 })
 
 app.post('/employeedit/update', async (req, res) => {
@@ -637,10 +753,22 @@ app.post('/employeedit/update', async (req, res) => {
     // doc.mobile = req.body.mobile;
     // doc.city = req.body.city;
     //    employeemodel.findByIdAndRemove({id: req.body.id},{employeeid.fullName},function(err,data){if(!err) console.log(data);});
+    const doc = new employeemodel();
+        doc.firstName = req.body.firstName;
+        doc.lastName = req.body.lastName;
+        doc.date_of_join = req.body.date_of_join;
+        doc.fullName = req.body.fullName;
+        doc.mobile = req.body.mobile;
+        doc.city = req.body.city;
+        doc.email = req.body.email;
+        doc.econtact = req.body.econtact;
+        console.log(req.body.filename);
+
+  
     if (req.session.email) {
         console.log("editupdate");
         console.log(req.body);
-        employeemodel.findOneAndUpdate({ _id: req.body.id }, req.body, { new: true }, (err, doc) => {
+        employeemodel.findOneAndUpdate({ _id: req.body.id }, doc, { new: true }, (err, doc) => {
             if (!err) { res.redirect('/employee/list') };
         }).lean();
     } else {
@@ -654,6 +782,77 @@ app.get('/lead/delete/:id', (req, res) => {
         Leadlist.findByIdAndDelete(req.params.id, (err, doc) => {
             if (!err) {
                 res.redirect('/lead');
+            } else {
+                console.log('Error while edit', err)
+            }
+        });
+    } else {
+        res.redirect('/');
+    }
+})
+
+app.get('/venderaccount/:id',(req,res)=>{
+ 
+    Project.findById(req.params.id, async (err, projectlist) => {
+        console.log(projectlist);
+        let emp = await employeemodel.find().lean();
+        if (!err) {
+
+            res.render("projectedit", {
+                projectlist,
+                emp
+            })
+        }
+    }).lean();
+
+  
+    res.redirect('/venderaccount');
+   
+})
+
+app.post('/transaction',(req,res)=>{
+ 
+    const doc = new transaction();
+    let amount = 100;
+    doc.debitFrom = 1004;
+    doc.creditTo  = "id1";
+    doc.currtBalance = 150;
+    let currtBalanceDebit  = doc.currtBalance;
+    let currtBalancecredit =  doc.currtBalance;
+    let updateBalanceDebit = 0;
+    let updateBalancecredit = 0 ;
+  
+
+    /// amount debit from debitbetter
+    if((doc.debitFrom == 1004) && (currtBalanceDebit > amount) && (doc.creditTo == "id1"))
+    {
+        //amount debit
+        updateBalanceDebit =   currtBalanceDebit - amount;
+
+        //amount credit
+        updateBalancecredit =  currtBalancecredit +  amount;
+               
+           
+     }
+
+    // doc.currentBalance
+    console.log("currtBalanceDebit    =" + currtBalanceDebit +
+                ",currtBalancecredit  =" + currtBalancecredit +
+                ",amount =" + amount +
+                ",updateBalanceDebit  =" + updateBalanceDebit +
+                ",updateBalanceCredit =" + updateBalancecredit);
+    
+  
+    res.redirect('/venderaccount');
+   
+})
+
+app.get('/vender/delete/:id', (req, res) => {
+    if (req.session.email) {
+        // console.log("list delete");
+        vender.findByIdAndDelete(req.params.id, (err, doc) => {
+            if (!err) {
+                res.redirect('/venderAccount');
             } else {
                 console.log('Error while edit', err)
             }
@@ -690,67 +889,69 @@ app.post('/insertproject', async (req, res) => {
 
 
 
+app.post('/addVender',(req,res)=>{
 
-app.post('/addcust', async (req, res) => {
-    // cont doc = new Leadlist();
-    // doc.cust_name = "test",
-    // doc.contact = "test",
-    // doc.enquiry = "test",
-    // doc.action ="test",
-    // doc.assigned_Id ="test",
-    // doc.assigned_emp ="test",
-    // doc.Status ="test",
-    //await doc.save()
-    // let lead = await Leadlist.find().lean();
-    // console.log(lead)
-    // res.render('lead', {
-    //     lead
-    // });
+    const doc = new vender();
+    doc.fullName = req.body.name;
+    doc.mobile = req.body.mobile;
+    doc.email = req.body.email;
+    doc.city = req.body.city;
+    doc.state= req.body.state;
+    doc.gstNo = req.body.gstNo;
+    doc.firmName = req.body.firmName;
+    doc.bankDetail = req.body.bankDetail;
+    doc.venderType = req.body.venderType;
+    doc.remark = req.body.remark;
+    doc.referenceBy = req.body.referenceBy;
+    // let add =  vender.find().lean();
+    doc.save()
+    // console.log(doc.fullName);
+
+    // res.status(200).send("it is working")
+    res.redirect('/venderAccount');
+})
+
+
+app.get('/venderAccountAll',async(req,res)=>{
+    let data = await vender.find().lean();
+    // console.log(data);
+    res.render('venderAccountAll', {
+        data
+    });
+})
+
+
+app.post('/addcust',upload,aadhereupload , (req, res) => {
+ 
      if (req.session.email) {       
-   
-        upload(req, res, (err) => {
-            if (err) {
-             Console.log(err);
-            }
-            else{
-                // console.log(req.file);
-                // console.log("test");
-            }
-        });
+
         const doc = new employeemodel();
         doc.firstName = req.body.firstName;
-        doc.lasttName = req.body.lastName;
+        doc.lastName = req.body.lastName;
         doc.date_of_join = req.body.date_of_join;
         doc.fullName = req.body.fullName;
         doc.mobile = req.body.mobile;
         doc.city = req.body.city;
         doc.email = req.body.email;
-        doc.econtact = req.body.econtact;
-        
-        //var file = req.file;
-       // var filename = req.body.pencard;
-        
-
-
-        await doc.save();
-    //     console.log(doc);
-         console.log(req.body);
-    //    console.log(req.params);
-        let emp = await employeemodel.find().lean();
-        
-        console.log(doc);
-       
-        // console.log(req.body.file);
-       // console.log(req.files.file);
-        // console.log(filename);
-
-        
-        
+        doc.econtact = req.body.econtact;        
+        doc.image = req.file.filename;
+     
+         doc.save()
+         console.log(req.file);
+         
+        let emp =  employeemodel.find().lean();
+           
+         upload(req, res, (err) => {
+            if (err) {
+             Console.log(err);
+            }
+            else{
+             
+            }
+        });
+        console.log(req.file);        
         res.redirect('employee/list');
-        // res.render('employee/list', {
-        //     emp
-        // });
-       // console.log("hello world");
+        
     }
     else {
         res.redirect('/');
@@ -794,6 +995,9 @@ app.post('/addemployee', async (req, res) => {
         doc.follow_last_person = req.body.follow_last_person;
         doc.follow_next_person = req.body.follow_next_person;
         doc.emplyee_working = req.body.emplyee_working;
+        doc.floor_two_d = req.body.floor_two_d;
+        doc.floor_three_d = req.body.floor_three_d;
+        doc.final_quotation = req.body.final_quotation;
         await doc.save();
         let lead = await Leadlist.find().lean();
         console.log(lead)

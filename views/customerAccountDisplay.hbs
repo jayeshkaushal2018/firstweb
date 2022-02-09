@@ -1,0 +1,221 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/ledger" class="curr_page">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:black" ;>Ledger</spam>
+            </a>
+        </li>
+
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+
+    <div class="profile_content">
+
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+
+    <table class="table table-striped  emp_teable" style="margin-top: 20px">
+        <thead class="thead-dark">
+
+            <tr>
+
+                <th scope="col">
+                    <h3 style="text-align: center;"><b>Customer Account </b></h3>
+                </th>
+
+
+            </tr>
+        </thead>
+
+    </table>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <h5><b>CLIENT</b></h5>
+                </td>
+                <td>MR. Sanjay SAXENA</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <h5><b>CONTACT NUMBER</b></h5>
+                </td>
+                <td>9300212348</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <h5><b>ADDRESS</b></h5>
+                </td>
+                <td>O Block -301 Shalimar palms , Indore - 452016 Madhya pradesh</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <h5><b>CITY</b></h5>
+                </td>
+                <td>INDORE
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-striped  emp_teable" style="margin-top: 20px">
+        <thead class="thead-dark">
+
+            <tr>
+
+                <th scope="col">
+                    <h3 style="text-align: center;"><b>Enter the details</b></h3>
+                </th>
+
+
+            </tr>
+        </thead>
+
+    </table>
+      <table class="table table-striped">
+        <thead class="thead-dark">
+
+        </thead>
+        <tbody>
+                        <tr>
+                <form action="#">
+                   <td><input type="date" id="date" name="fname" value="date"></td>
+                   <td><input type="text" id="receipt" name="receipt" value="Receipt"></td>
+                   <td><input type="text" id="particular" name="particular" value="Particular"></td>
+                   <td><input type="text" id="debit_amt" name="debit_amt" value="Debit Amount"></td>
+                   <td><input type="text" id="credit_amt" name="credit_amt" value="Credit Amount"></td>
+                   <td><input type="text" id="remark" name="remark" value="Remarks"></td>
+                   <td><button type="button" class="btn btn-warning">Submit</button><td>
+                   
+                </form>
+            </tr>
+       </tbody>
+      </table>
+
+    <table class="table table-striped" style="margin-top: 20px;">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col"><b>S.NO.</b></th>
+                <th scope="col"><b>DATE</b></th>
+                <th scope="col"><b>RECEIPT . NO</b></th>
+                <th scope="col"><b>PARTICULARS</b></th>
+                <th scope="col"><b>DEBIT AMT</b></th>
+                <th scope="col"><b>CREDIT AMT</b></th>
+                <th scope="col"><b>BALANCE</b></th>
+                <th scope="col"><b>REMARKS</b></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>10/7/2021</td>
+                <td></td>
+                <td>TOKEN</td>
+                <td> </td>
+                <td> </td>
+                <td><b>31000</b></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">.</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>31000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">.</th>
+                <td></td>
+                <td></td>
+                <td>jayesh worker</td>
+                <td>5000</td>
+                <td></td>
+                <td>26000</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">.</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">.</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+</div>
+
+</div>

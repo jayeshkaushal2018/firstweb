@@ -1,0 +1,456 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        <li>
+            <a href="/ledger" class="curr_page">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:black" ;>Ledger</spam>
+            </a>
+        </li>
+
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+
+    <div class="profile_content">
+
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+    <table class="table table-striped  emp_teable" style="margin-top: 20px">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col" style="text-align: end"> </th>
+                <th scope="col">
+                    <h3 style="text-align: end;">Vender Account</h3>
+                </th>
+                <th scope="col" style="text-align: end"> <button type="button" class="btn btn-info "><a
+                            href="/addVenderAccount" style="color: #fff;">
+                            <h4>+ Create Vender Account</h4>
+                        </a></button></th>
+
+
+            </tr>
+        </thead>
+
+    </table>
+    <div class="col-auto">
+        <div class="form-row">
+            	
+                
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                <div class="input-group mb-2">
+
+
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by name"
+                        title="Type in a name" class="form-control">
+                    <div class="input-group-prepend"></div>
+                    <div class="input-group-text" style="background-color: #fff;"><i class="fas fa-search"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<table class="table table-striped  emp_table " style=" margin-left: 15%;width:2000px;" id="myTable">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">NAME</th>
+            <th scope="col">GSTIN No.</th>
+            <th scope="col">FIRM NAME</th>
+            <th scope="col">BANK DETAIL</th>
+            <th scop="col">CITY</th>
+            <th scop="col">TYPES OF VENDER</th>
+            <th scop="col">MOBILE</th>
+             <th scop="col">EMAIL</th>
+            <th scop="col">REMARKS</th>
+            <th scop="col">REFERENCE</th>
+            <th scop="col">VIEW CUSTOMER</th>
+            <th scop="col">VIEW ACCOUNT</th>
+            <th scop="col">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+         {{#each data}}
+        <tr>
+            <td id="vendername">{{this.fullName}}</td>
+            <td id="gstNo">{{this.gstNo}}</td>
+            <td id="firmName">{{this.firmName}}</td>
+            <td id="bankDetail">{{this.bankDetail}}</td>
+            <td id="city">{{this.city}}</td>
+            <td id="venderType">{{this.venderType}}</td>
+            <td id="mobile">{{this.mobile}}</td>
+            <td id="emailid">{{this.email}}</td>
+            <td id="remark">{{this.remark}}</td>
+            <td id="referenceBy">{{this.referenceBy}}</td>
+            <td><button type="button" class="btn btn-primary" id="testbutton" data-toggle="modal"
+                    data-target="#venderView">
+                     View <i class="fa fa-eye" aria-hidden="true"></i></button></td>
+            <td><button type="button" class="btn btn-primary" id="testbutton" data-toggle="modal"
+                    data-target="#Viewvenderaccount"><a href="/venderaccount/{{this._id}}">
+                     Account <i class="fa fa-eye" aria-hidden="true"></i></a></button></td>
+            <td id="action"> <a href="/vender/delete/{{this._id}}"
+                    onclick="return confirm('Are you sure to delete this record?');">
+                    <i class="fa fa-trash fa-lg" aria-hidden="true" style="color:black;"></i>
+                </a>
+                <a href="/venderedit/{{this._id}}" style="padding-left:10px;">
+                    <i class="fas fa-edit" style="color:black;"></i>
+                </a>
+            </td>
+
+        </tr>
+
+
+        <div class="modal fade" id="venderView" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="border-radius: 20%;">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLongTitle">Vender Details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            {{!-- customer name --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Vender Name :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="vendernamemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                           {{!-- Vender GSTNO --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">GST no. :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="gstnomodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                            {{!-- Firm name --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Firm Name:</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="firmnamemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                            {{!-- Bank Detail --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Bank Details :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="bankdetailmodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                             {{!-- vender city --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">City :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="citymodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                            {{!-- Vender Type  --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Type Vender :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="vendertypemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                           {{!-- Mobile  --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Mobile :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="mobilemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+
+                           {{!-- Email  --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Email :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="emailmodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                             {{!-- Remark  --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Remark :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="remarkmodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+                             {{!-- Reference  --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Reference :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="referencemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
+                            </div>
+
+
+                            {{!-- Final Quotation status --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Final Quotation status:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.final_quotation}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- comments--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">comment :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit. Nobis at hic, maxime esse, consequuntur rem
+                                        pariatur obcaecati dolore vel aliquid voluptatem. Vel maiores quisquam incidunt,
+                                        cum id numquam accusamus minima.</h6>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                style="width: 20%;">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          {{/each}}
+
+        
+       
+
+    </tbody>
+</table>
+</div>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script>
+        function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td1 = tr[i].getElementsByTagName("td")[0];
+            td2 = tr[i].getElementsByTagName("td")[1];
+            td3 = tr[i].getElementsByTagName("td")[2];
+            td4 = tr[i].getElementsByTagName("td")[3];
+            td5 = tr[i].getElementsByTagName("td")[4];
+            td6 = tr[i].getElementsByTagName("td")[5];
+
+
+            if (td1 || td2) {
+                txtValue1 = td1.textContent || td1.innerText;
+                txtValue2 = td2.textContent || td2.innerText;
+                txtValue3 = td3.textContent || td3.innerText;
+                txtValue4 = td4.textContent || td4.innerText;
+                txtValue5 = td5.textContent || td5.innerText;
+                txtValue6 = td6.textContent || td6.innerText;
+
+                if ((txtValue1.toUpperCase().indexOf(filter) > -1) || (txtValue2.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue3.toUpperCase().indexOf(filter) > -1) || (txtValue4.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue5.toUpperCase().indexOf(filter) > -1) || (txtValue6.toUpperCase().indexOf(filter) > -1)) {
+                    tr[i].style.display = "";
+                } else {
+
+                    tr[i].style.display = "none";
+
+                }
+            }
+        }
+    }
+
+
+
+        
+  
+
+    $(function () {
+        $('#myTable tr').on('click', '#testbutton', function () {
+            
+            var currentRow      = $(this).closest("tr");
+            var vendername      = currentRow.find("td:eq(0)").text();
+            var gstNo           = currentRow.find("td:eq(1)").text();
+            var firmName        = currentRow.find("td:eq(2)").text();
+            var bankdetail      = currentRow.find("td:eq(3)").text();
+            var city            = currentRow.find("td:eq(4)").text();
+            var vendertype      = currentRow.find("td:eq(5)").text();
+            var mobile          = currentRow.find("td:eq(6)").text();
+            var email           = currentRow.find("td:eq(7)").text();
+            var remark          = currentRow.find("td:eq(8)").text();
+            var reference        = currentRow.find("td:eq(8)").text();
+       
+
+
+        
+            $('#vendernamemodel').text(vendername);
+            $('#gstnomodel').text(gstNo);
+            $('#firmnamemodel').text(firmName);
+            $('#bankdetailmodel').text(bankdetail);
+            $('#citymodel').text(city);
+            $('#vendertypemodel').text(vendertype);
+            $('#mobilemodel').text(mobile);
+            $('#emailmodel').text(email);
+            $('#remarkmodel').text(remark);
+            $('#referencemodel').text(reference);
+            
+        });
+    });
+
+</script>

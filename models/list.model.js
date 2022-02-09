@@ -108,6 +108,15 @@ var leadlistSchema = new mongoose.Schema({
     },
     follow_last_person:{
         type:Array
+    },
+    floor_two_d:{
+        type: String
+    },
+    floor_three_d:{
+        type: String
+    },
+    final_quotation:{
+        type: String
     }
 
 

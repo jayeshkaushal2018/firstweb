@@ -27,6 +27,12 @@
                 <spam class="links_name">Leads</spam>
             </a>
         </li>
+         <li style="margin-top: 10px;">
+            <a href="/ledger">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Ledger</spam>
+            </a>
+        </li>
         {{!-- <li style="margin-top: 10px;">
             <a href="/project">
                 <i class='bx bx-grid-small'></i>
@@ -129,7 +135,12 @@
                 <td>{{this.email}}</td>
                 <td>{{this.mobile}}</td>
                 <td style="text-transform: capitalize;">{{this.city}}</td>
-                <td>AAAAA888A</td>
+                {{!-- <td><img src="./public/upload/{{this.image}}" width="50px" /></td> --}}
+                <td>
+                    {{#if this.image}}
+                    <img src="/upload/{{this.image}}" width="50px"/>   
+                    {{/if}}
+                </td>
                 <td>0000 1111 2222</td>
                 <td>{{this.empid}}</td>
                 <td style="text-align: center;">

@@ -33,6 +33,12 @@
 				<spam class="links_name" style="color:Black; ">Leads</spam>
 			</a>
 		</li>
+		 <li style="margin-top: 10px;">
+            <a href="/ledger">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Ledger</spam>
+            </a>
+        </li>
 		{{!-- <li style="margin-top: 10px;">
 			<a href="/project">
 				<i class='bx bx-grid-small'></i>
@@ -235,7 +241,8 @@
 	<form class="well form-horizontal" action="/addemployee" method="post" id="contact_form"
 		style="background-color:#dddcdc ;margin-top: 40px;padding-top: 40px;padding-right: 100px;border-radius:5px;margin-right:20px;margin-bottom:20px;"
 		name=""
-		onsubmit="return validation()">
+		{{!-- onsubmit="return validation()" --}}
+		>
 		<fieldset>
 
 			<!-- Form Name -->
@@ -246,9 +253,9 @@
 			</legend><br>
 
 			<!-- Text input-->
-			<input type="hidden" class="form-control" id="cust_name" name="id" aria-label="Fullname"
+			<input type="hidden" class="form-control" id="id" name="id" aria-label="Fullname"
 				aria-describedby="basic-addon1">
-			 
+			
 
 			<div class="form-group row row">
 				<label class="col-md-5 control-label">
@@ -263,7 +270,7 @@
 								<i class="fa fa-user fa-1x" style="background: white;"></i>
 							</span>
 						</div>
-						<input type="text" class="form-control" placeholder="Fullname" id="custs_name" name="custs_name"
+						<input type="text" class="form-control" placeholder="Fullname" id="cust_name" name="cust_name"
 							aria-label="Fullname" aria-describedby="basic-addon1">
 							<span class="text-danger" name="cust_name_error" id="cust_name_error"></span>
 					</div>
@@ -282,7 +289,7 @@
 
 			<div class="form-group row row ">
 				<label class="col-md-5 control-label">
-					<h4 style="text-align: right;"><b>Phone</b></h4>
+					<h4 style="text-align: right;"><b>Phone/Whatsup</b></h4>
 				</label>
 				<div class="col-md-7 inputGroupContainer">
 					{{!-- <div class="input-group">
@@ -304,9 +311,57 @@
 				</div>
 			</div>
 
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>E-Mail@</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-envelope fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input name="email" placeholder="customer email" class="form-control" type="email">
+					</div>
+				</div>
+			</div>
+
 			<div class="form-group row">
 				<label class="col-md-5 control-label">
 					<h4 style="text-align: right;"><b>City</b></h4>
+				</label>
+				<div class="col-md-7 selectContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span> --}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-plane fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <select name="department" class="form-control selectpicker">
+							<option value="">Select your Department/Office</option>
+							<option>Department of Engineering</option>
+							<option>Department of Agriculture</option>
+							<option>Accounting Office</option>
+							<option>Tresurer's Office</option>
+							<option>MPDC</option>
+							<option>MCTC</option>
+							<option>MCR</option>
+							<option>Mayor's Office</option>
+							<option>Tourism Office</option>
+						</select> --}}
+						<input name="city" id="city" class="form-control" type="text" placeholder="city">
+						<span class="text-danger" name="city_error" id="city_error"></span>
+					</div>
+				</div>
+			</div>
+
+						<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>State</b></h4>
 				</label>
 				<div class="col-md-7 selectContainer">
 					<div class="input-group">
@@ -372,24 +427,7 @@
 				</div>
 			</div>
 
-			<!-- Text input-->
 
-			<div class="form-group row">
-				<label class="col-md-5 control-label">
-					<h4 style="text-align: right;"><b>E-Mail@</b></h4>
-				</label>
-				<div class="col-md-7 inputGroupContainer">
-					<div class="input-group">
-						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> --}}
-						<div class="input-group-prepend">
-							<span class="input-group-text" id="basic-addon1">
-								<i class="fa fa-envelope fa-1x" style="background: white;"></i>
-							</span>
-						</div>
-						<input name="email" placeholder="customer email" class="form-control" type="email">
-					</div>
-				</div>
-			</div>
 
 			<!-- Text input-->
 			<div class="form-group row">
@@ -452,9 +490,35 @@
 						--}}
 						<select name="customer_property" class="form-control selectpicker">
 							<option selected>Type of customer property</option>
-							<option value="Flat">Flat</option>
-							<option value="Villa">Villa</option>
-							<option value="Commercial">Commercial</option>
+							<option value="Flat">Resident</option>
+							<option value="Villa">commercial</option>
+							
+						</select>
+					</div>
+				</div>
+			</div>
+
+				<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Possession Type</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-address-book fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="customer_property" class="form-control selectpicker">
+							<option selected>Possession type</option>
+							<option value="Flat">Under construnction</option>
+							<option value="Villa">New completed</option>
+							
 						</select>
 					</div>
 				</div>
@@ -750,21 +814,98 @@
 					<h4 style="text-align: right;"><b>When the service wanted</b></h4>
 				</label>
 				<div class="col-md-7 inputGroupContainer">
+					
 					<div class="input-group">
 						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 						--}}
 						<div class="input-group-prepend">
 							<span class="input-group-text" id="basic-addon1">
-								<i class="fa fa-calendar fa-1x" style="background: white;"></i>
+								<i class="fa fa-home fa-1x" style="background: white;"></i>
 							</span>
 						</div>
-						<input name="service_wanted" class="form-control" type="date">
-						{{!-- <select id="service" class="form-control">
-							<option selected>Present status of customer properties...</option>
-							<option>NEW property</option>
-							<option>OLD property</option>
-							<option>Renovation</option>
-						</select> --}}
+						
+						<input list="browsers" name="no_room" style=" width: 520px; border-color: white;"/>
+						<datalist id="browsers">
+							<option value="with in 2 month">with in 2 month</option>
+							<option value="Immedialy">Immedialy</option>
+							<option value="After 2 months">After 2 MONTHS</option>
+							
+						</datalist>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group row row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>comment :</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <input name="first_name" placeholder="First Name" class="form-control" type="email">
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-user fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						<input type="text" class="form-control" placeholder="commment " id="custs_name" name="custs_name"
+							aria-label="Fullname" aria-describedby="basic-addon1">
+							<span class="text-danger" name="cust_name_error" id="cust_name_error"></span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Floor Plane</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-building fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="floor_two_d" class="form-control selectpicker">
+							<option selected>Present status of Floor  plane</option>
+							<option value="Receive">Receive</option>
+							<option value="Waiting">Waiting</option>
+							<option value="Sent">Sent</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+
+
+						<!-- Text input-->
+			<div class="form-group row">
+				<label class="col-md-5 control-label">
+					<h4 style="text-align: right;"><b>Final Quotation</b></h4>
+				</label>
+				<div class="col-md-7 inputGroupContainer">
+					<div class="input-group">
+						{{!-- <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						--}}
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="basic-addon1">
+								<i class="fa fa-building fa-1x" style="background: white;"></i>
+							</span>
+						</div>
+						{{!-- <input name="address" placeholder="Customer address " class="form-control" type="email">
+						--}}
+						<select name="final_quotation" class="form-control selectpicker">
+							<option selected>Final Quotation status</option>
+							<option value="Revecive">Receive</option>
+							<option value="Waiting">Waiting</option>
+							<option value="Sent">Sent</option>
+						</select>
 					</div>
 				</div>
 			</div>

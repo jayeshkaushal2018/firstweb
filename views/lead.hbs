@@ -34,6 +34,12 @@
                 <spam class="links_name" style="color:Black; ">Leads</spam>
             </a>
         </li>
+        <li style="margin-top: 10px;">
+            <a href="/ledger">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Ledger</spam>
+            </a>
+        </li>
         {{!-- <li style="margin-top: 10px;">
             <a href="/project">
                 <i class='bx bx-grid-small'></i>
@@ -80,6 +86,7 @@
         <thead class="thead-dark">
 
             <tr>
+                <th scope="col" style="text-align: end"> </th>
                 <th scope="col">
                     <h3 style="text-align: end;">Lead List</h3>
                 </th>
@@ -95,13 +102,17 @@
     </table>
     <div class="col-auto">
         <div class="form-row">
-            <div class="col-md-3 mb-3"></div>
+            <div class="col-md-3 mb-3">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Excel
+                    sheet download</button>
+            </div>
             <div class="col-md-6 mb-3">
                 <label class="sr-only" for="inlineFormInputGroup">Username</label>
-                <div class="input-group mb-2" style="margin-left: 250px;">
+                <div class="input-group mb-2">
 
 
-                    <input type="text" id="myInput"  onkeyup="myFunction()" placeholder="Search by name" title="Type in a name" class="form-control">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by name"
+                        title="Type in a name" class="form-control">
                     <div class="input-group-prepend"></div>
                     <div class="input-group-text" style="background-color: #fff;"><i class="fas fa-search"></i></div>
                 </div>
@@ -112,28 +123,38 @@
     </div>
 </div>
 
-<table class="table table-striped  emp_table " style="width: 2000px; margin-left: 15%;" id="myTable">
+<table class="table table-striped  emp_table " style="width: 2800px; margin-left: 15%;" id="myTable">
 
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Customer Details</th>
+            <th scope="col" style="width:200px;"><input type="checkbox" onClick="toggle(this)" /> All</th>
+            <th scope="col" style="width:600px;">Customer Name</th>
             {{!-- <th scope="col">Contact</th> --}}
             {{!-- <th scope="col">City</th> --}}
+
             <th scope="col">Email</th>
-            <th scope="col">Budget</th>
+            <th scope="col">Phone</th>
+            <th scope="col">City</th>
+            <th scope="col" style="display:none;">Budget</th>
             <th scope="col">Enquiry</th>
 
-            {{!-- <th scope="col">Type of propertie</th> --}}
-            <th scope="col">Type Of Room</th>
-            <th scope="col">Status Of Properties</th>
-            <th scope="col">Type Of Property</th>
-            <th scope="col">Last Follow Up</th>
-            <th scope="col">Next Follow Up</th>
-            <th scope="col">When the Service Wanted</th>
-            <th scope="col">Employee add</th>
-            <th scope="col">Status of project</th>
-            <th scope="col">next person to follow</th>
-            <th scope="col">last Person Follow</th>
+            <th scope="col" style="display:none;">Type of propertie</th>
+            <th scope="col" style="display:none;">Type Of Room</th>
+            <th scope="col">Properties</th>
+            <th scope="col" style="display:none;">Type Of Property</th>
+            <th scope="col" style="display:none;">Last Follow Up</th>
+            <th scope="col" style="display:none;">Next Follow Up</th>
+            <th scope="col" style="display:none;">When the Service Wanted</th>
+            {{!-- <th scope="col">Employee add</th> --}}
+            <th scope="col">Lead Executive</th>
+            <th scope="col">Status</th>
+            <th scope="col" style="display:none;">next person to follow</th>
+            <th scope="col" style="display:none;">last Person Follow</th>
+            <th scope="col">Floor Plane</th>
+            {{!-- <th scope="col">Final 3D</th> --}}
+            <th scope="col">Quotation status</th>
+            <th scope="col"> View</th>
+            {{!-- <th scope="col">Test</th> --}}
             <th scope="col">Send the message</th>
             {{!-- <th scope="col">Testing</th> --}}
             <th scope="col" style="width: 150px;text-align: center;">Action</th>
@@ -278,25 +299,46 @@
 
         {{#each lead}}
         <tr>
+            <td id="excel"><input type="checkbox" name="foo" value="bar1"><br /><br /></td>
+            <td style="text-transform: capitalize;style=width: 200px;" id="custname">{{this.cust_name}}
+                {{!-- <br />{{this.phone}}<br / --}} {{!-->{{this.city}} --}}
+            </td>
+            {{!-- <td><button type="button" class="btn btn-primary"> View <i class="fa fa-eye"
+                        aria-hidden="true"></i></button></td> --}}
 
-            <td style="text-transform: capitalize;">{{this.cust_name}}<br />{{this.phone}}<br />{{this.city}}</td>
-            <td>{{this.email}}</td>
-            <td style="text-transform: capitalize;">{{this.budget}}</td>
-            <td style="text-transform: capitalize;">{{this.enqiury}}</td>
-            <td>{{this.customer_property}}</td>
-            <td>{{this.property_status}}</td>
-            <td>{{this.no_room}}</td>
+            <td id="emailid">{{this.email}}</td>
+            <td id="phoneid">{{this.phone}}</td>
+            <td style="text-transform: capitalize;" id="city">{{this.city}}</td>
+            <td style="text-transform: capitalize;display:none;" id="budget">{{this.budget}}</td>
+            <td style="text-transform: capitalize;" id="enqiury">{{this.enqiury}}</td>
+            <td style="display: none;" id="customer_property">{{this.customer_property}}</td>
+            <td id="property_status">{{this.property_status}}</td>
+            <td style="display:none;" id="no_room">{{this.no_room}}</td>
             {{!-- <td>status of properties</td> --}}
-            <td>{{this.follow_last}}</td>
-            <td>{{this.follow_next}}</td>
-            <td>{{this.service_wanted}}</td>
-            <td style="text-transform: capitalize;">{{this.emplyee_working}}</td>
-            <td style="text-transform: capitalize;">{{this.project_status}}</td>
-            <td style="text-transform: capitalize;">{{this.follow_next_person}}</td>
-            <td style="text-transform: capitalize;">{{this.follow_last_person}}</td>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-comment fa-lg" aria-hidden="true"></i> SMS</button></td>
-            {{!-- <td><button  type="button"   class="btn btn-primary openBtn" data-toggle="modal" data-target="#example" >this is it</button> --}}
-            
+            <td style="display:none;" id="follow_last">{{this.follow_last}}</td>
+            <td style="display:none;" id="follow_next">{{this.follow_next}}</td>
+            <td style="display:none;" id="service_wanted">{{this.service_wanted}}</td>
+            <td style="text-transform: capitalize;" id="emplyee_working">{{this.emplyee_working}}</td>
+            <td style="text-transform: capitalize;" id="project_status">{{this.project_status}}</td>
+            <td style="text-transform: capitalize;display:none;" id="follow_next_person">{{this.follow_next_person}}
+            </td>
+            <td style="text-transform: capitalize;display:none;" id="follow_last_person">{{this.follow_last_person}}
+            </td>
+            <td>{{this.floor_two_d}}</td>
+            {{!-- <td>{{this.floor_three_d}}</td> --}}
+            <td>{{this.final_quotation}}</td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#customerView">View <i
+                        class="fa fa-eye" aria-hidden="true"></i></button></td>
+            {{!-- <td> <button class="btn btn-primary btnDemo">hello</button></td> --}}
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i
+                        class="fa fa-comment fa-lg" aria-hidden="true"></i> SMS</button></td>
+            <td><button type="button" class="btn btn-primary" id="testbutton" data-toggle="modal"
+                    data-target="#customerView">
+                    {{!-- data-toggle="modal" data-target="#customerViewtest"> --}}
+                    <i class="fa fa-comment fa-lg" aria-hidden="true"></i> Test</button></td>
+            {{!-- <td><button type="button" class="btn btn-primary openBtn" data-toggle="modal"
+                    data-target="#example">this is it</button> --}}
+
             <td style="text-align: center;">
                 {{!-- <a href="/employee/{{employee._id}}">
                     <button type="button" class="btn btn-danger">Delete</button>
@@ -312,82 +354,685 @@
                 </a> --}}
 
             </td>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sending message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/sendMessage" method="POST">
-                            <div class="form-group">
-                                <label for="number"> Enter Number</label>
-                                <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Enter Message</label>
-                                <textarea id="message" name="message" rows="12" cols="60" style="text-transform: uppercase;">{{this._id}}Customer name : {{cust_name}}&#10; Phone : {{this.phone}}&#10;City : {{this.city}}&#10;Email : {{this.email}}&#10;Budget : {{this.budget}}&#10;Enquiry : {{this.enqiury}}&#10;Type of Room : {{this.customer_property}}&#10;Status Of Properties : {{this.property_status}}&#10;Employee working : {{this.emplyee_working}}&#10;status : {{this.project_status}}
-                             
-                               </textarea>
-                            
 
-                            </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Sending message</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/sendMessage" method="POST">
+                                <div class="form-group">
+                                    <label for="number"> Enter Number</label>
+                                    <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Enter Message</label>
+                                    <textarea rows="4" cols="50" name="comment" id="message" name="message"
+                                        form="usrform">Enter text here...</textarea>
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                        <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
+            {{!--
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet"> --}}
 
-         <!-- Modal -->
-        <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sending message</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/sendMessage" method="POST">
-                            <div class="form-group">
-                                <label for="number"> Enter Number</label>
-                                <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
+            <!-- customer view Modal customerView-->
+            <div class="modal fade" id="customerView" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="border-radius: 20%;">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLongTitle">Customer details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Text input-->
+                            {{!--
+                             <div class="form-group row" style="background-color: red; padding: 0px;margin : 0px;">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Customer name : </h6>
+                                </label>
+                                <div class="col-sm-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <label class="col-sm-12 control-label">
+                                            <h6 style="text-align: left;text-transform: capitalize;">{{this.cust_name}}
+                                            </h6><br> --}}
+                                            {{!-- <h6 style="text-align: right;">City : {{this.city}}&#10;Email :
+                                                {{this.email}}&#10;Budget : {{this.budget}}&#10;Enquiry :
+                                                {{this.enqiury}}&#10;Type of Room :
+                                                {{this.customer_property}}&#10;Status Of Properties :
+                                                {{this.property_status}}&#10;Employee working :
+                                                {{this.emplyee_working}}&#10;status : {{this.project_status}} --}}
+                                                {{!--
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+                            {{!-- phone number --}}
+                            {{!-- <div>
+                                <h6 style="text-align: right;">Customer name : </h6>
+                                <h6 style="text-align: left;text-transform: capitalize;">{{this.cust_name}}</h6><br>
+                            </div> --}}
+
+                            {{!-- customer name --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Customer name :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                       
+                                        
+                                        <h6 id="custnamemodel"></h6>
+                                        
+                                    </strong>
+                                </label>
                             </div>
-                            <div class="form-group">
-                                <label for="message">Enter Message</label>
-                                <textarea id="message" name="message" rows="12" cols="60" style="text-transform: uppercase;">
+
+                            {{!-- customer phone no --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Phone : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;" id="phonemodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer email --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Email : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;" id="emailmodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer city --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">City : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="citymodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer budget --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Budget : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="budgetmodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer budget --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Enquiry : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="enqiurymodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer type of room --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Type of room : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.customer_property}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- customer type of status of properties --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Status of properite : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="property_statusmodel"></h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- customer type of status of properties --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Type of properties : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="no_roommodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer last follow up --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Last flow up : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;" id="follow_lastmodel"></h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer last follow up --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Next flow up : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_next}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- when customer service wanted --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Customer service wanted : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.service_wanted}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- employees working on project --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Employee working on project:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.emplyee_working}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- status of project --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Status of project:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.project_status}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Next person to follow --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Next pserson to follow:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_next_person}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Next person to follow --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Last pserson to follow:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_last_person}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Floor 2D plane--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Floor 2D plane:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.floor_two_d}}</h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- Floor 3D plane--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Floor 3D plane:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.floor_three_d}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- Final Quotation status --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Final Quotation status:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.final_quotation}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- comments--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">comment :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit. Nobis at hic, maxime esse, consequuntur rem
+                                        pariatur obcaecati dolore vel aliquid voluptatem. Vel maiores quisquam incidunt,
+                                        cum id numquam accusamus minima.</h6>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                style="width: 20%;">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{!-- this is an test --}}
+            <div class="modal fade" id="my-modal" tabindex="-1" role="dialog" aria-labelledby="my-modal"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">My Modal</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- customer view Modal customerView-->
+            <div class="modal fade" id="customerViewtest" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="border-radius: 20%;">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="exampleModalLongTitle">Customer details</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Text input-->
+                            {{!-- <div class="form-group row" style="background-color: red; padding: 0px;margin : 0px;">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Customer name : </h6>
+                                </label>
+                                <div class="col-sm-7 inputGroupContainer">
+                                    <div class="input-group">
+                                        <label class="col-sm-12 control-label">
+                                            <h6 style="text-align: left;text-transform: capitalize;">{{this.cust_name}}
+                                            </h6><br> --}}
+                                            {{!-- <h6 style="text-align: right;">City : {{this.city}}&#10;Email :
+                                                {{this.email}}&#10;Budget : {{this.budget}}&#10;Enquiry :
+                                                {{this.enqiury}}&#10;Type of Room :
+                                                {{this.customer_property}}&#10;Status Of Properties :
+                                                {{this.property_status}}&#10;Employee working :
+                                                {{this.emplyee_working}}&#10;status : {{this.project_status}} --}}
+                                                {{!--
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> --}}
+
+                            {{!-- phone number --}}
+                            {{!-- <div>
+                                <h6 style="text-align: right;">Customer name : </h6>
+                                <h6 style="text-align: left;text-transform: capitalize;">{{this.cust_name}}</h6><br>
+                            </div> --}}
+
+                            {{!-- customer name --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;text-transform: capitalize;">Customer name :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <strong>
+                                        <h6 style="text-align: left;" id="test_customer">test cumstoer</h6>
+                                    </strong>
+                                </label>
+                            </div>
+
+                            {{!-- customer phone no --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Phone : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;">{{this.phone}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer email --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Email : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;">{{this.email}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer city --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">City : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.city}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer budget --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Budget : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.budget}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer budget --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Enquiry : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.enqiury}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer type of room --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Type of room : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.customer_property}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- customer type of status of properties --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Status of properite : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.property_status}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- customer type of status of properties --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Type of properties : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.no_room}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer last follow up --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Last flow up : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_last}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- customer last follow up --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Next flow up : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_next}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- when customer service wanted --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Customer service wanted : </h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.service_wanted}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- employees working on project --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Employee working on project:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.emplyee_working}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- status of project --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Status of project:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.project_status}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Next person to follow --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Next pserson to follow:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_next_person}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Next person to follow --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Last pserson to follow:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.follow_last_person}}
+                                    </h6>
+                                </label>
+                            </div>
+
+                            {{!-- Floor 2D plane--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Floor 2D plane:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.floor_two_d}}</h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- Floor 3D plane--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Floor 3D plane:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.floor_three_d}}</h6>
+                                </label>
+                            </div>
+
+                            {{!-- Final Quotation status --}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">Final Quotation status:</h6>
+                                </label>
+
+                                <label class="col-sm-6 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">{{this.final_quotation}}
+                                    </h6>
+                                </label>
+                            </div>
+
+
+                            {{!-- comments--}}
+                            <div style="flex-direction: row; ">
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: right;">comment :</h6>
+                                </label>
+
+                                <label class="col-sm-5 control-label">
+                                    <h6 style="text-align: left;text-transform: capitalize;">Lorem ipsum dolor sit amet,
+                                        consectetur adipisicing elit. Nobis at hic, maxime esse, consequuntur rem
+                                        pariatur obcaecati dolore vel aliquid voluptatem. Vel maiores quisquam incidunt,
+                                        cum id numquam accusamus minima.</h6>
+                                </label>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                style="width: 20%;">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="example" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h6 class="modal-title" id="exampleModalLabel">Sending message</h6>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/sendMessage" method="POST">
+                                <div class="form-group">
+                                    <label for="number"> Enter Number</label>
+                                    <input type="text" id="numbers" name="numbers" value="{{this.phone}}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message">Enter Message</label>
+                                    <textarea id="message" name="message" rows="12" cols="60"
+                                        style="text-transform: uppercase;">
                                     this is testing
                                 </textarea>
-                            
 
-                            </div>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                    <!-- <div class="modal-footer">
+
+                                </div>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" value="send message" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                        <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
 
-        
+
 
         </tr>
         {{/each}}
@@ -397,13 +1042,144 @@
 </div>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
 <script>
-    $('.openBtn').on('click',function(){
-        $(.modal-body).load('content.html',function(){
-            $('#example').modal({show:ture});
+    $('.openBtn').on('click', function () {
+        $(.modal - body).load('content.html', function () {
+            $('#example').modal({ show: ture });
         })
     })
 
 
+        //function myFunction() {
+            //var input, filter, table, tr, td, i, txtValue;
+            //input = document.getElementById("myInput");
+            //filter = input.value.toUpperCase();
+            //table = document.getElementById("myTable");
+            //tr = table.getElementsByTagName("tr");
+            //for (i = 0; i < tr.length; i++) {
+            //    td1 = tr[i].getElementsByTagName("td")[0];
+            //    //td2 = tr[i].getElementsByTagName("td")[1];
+            //    //td3 = tr[i].getElementsByTagName("td")[2];
+            //    //td4 = tr[i].getElementsByTagName("td")[3];
+            //  //  td5 = tr[i].getElementsByTagName("td")[4];
+            //    if (td1 ) {
+            //        txtValue1 = td1.textContent || td1.innerText;
+            //       // txtValue2 = td2.textContent || td2.innerText;
+            //       // txtValue3 = td3.textContent || td3.innerText;
+            //       // txtValue4 = td4.textContent || td4.innerText;
+            //        
+            //        if ((txtValue1.toUpperCase().indexOf(filter) > -1) ) {
+            //            tr[i].style.display = "";
+            //        } else {
+//
+            //            tr[i].style.display = "none";
+//
+            //        }
+            //    }
+            //}
+
+         //   console.log("working");
+     //   }
+
+
+</script>
+<script>
+
+    
+  
+
+    $(function () {
+        $('#myTable tr').on('click', '#testbutton', function () {
+            
+            var currentRow      = $(this).closest("tr");
+            var custname        = currentRow.find("td:eq(1)").text();
+            var email           = currentRow.find("td:eq(2)").text();
+            var phone           = currentRow.find("td:eq(3)").text();
+            var city            = currentRow.find("td:eq(4)").text();
+            var budget          = currentRow.find("td:eq(5)").text();
+            var enqiury         = currentRow.find("td:eq(6)").text();
+            var property_status = currentRow.find("td:eq(7)").text();
+            
+            var no_room         = currentRow.find("td:eq(8)").text();
+            var follow_last     = currentRow.find("td:eq(9)").text();
+           
+            //let customer_property = 'jquery';
+            //let property_status = 'jquery';
+            //let no_room = 'jquery';
+            //let follow_last = 'jquery';
+            let follow_next = 'jquery';
+            let service_wanted = 'jquery';
+            let emplyee_working = 'jquery';
+            let project_status = 'jquery';
+            let follow_next_person = 'jquery';
+            let follow_last_person = 'jquery';
+            let floor_two_d = 'jquery';
+            let final_quotation = 'jquery';
+
+
+          
+           
+            $('#follow_next', this).each(function () {
+                follow_next = $(this).text();
+            })
+            $('#service_wanted', this).each(function () {
+                service_wanted = $(this).text();
+            })
+            $('#emplyee_working', this).each(function () {
+                emplyee_working = $(this).text();
+            })
+            $('#project_status', this).each(function () {
+                project_status = $(this).text();
+            })
+            $('#follow_next_person', this).each(function () {
+                follow_next_person = $(this).text();
+            })
+            $('#follow_last_person', this).each(function () {
+                follow_last_person = $(this).text();
+            })
+            $('#floor_two_d', this).each(function () {
+                floor_two_d = $(this).text();
+            })
+            $('#final_quotation', this).each(function () {
+                final_quotation = $(this).text();
+            })
+
+            
+
+        
+            $('#custnamemodel').text(custname);
+            $('#phonemodel').text(phone);
+            $('#emailmodel').text(email);
+            $('#citymodel').text(city);
+            $('#budgetmodel').text(budget);
+            $('#enqiurymodel').text(enqiury);
+            $('#property_statusmodel').text(property_status);
+            $('#no_roommodel').text(no_room);
+            $('#follow_lastmodel').text(follow_last);
+            $("#customerView").modal('show');
+            
+        });
+    });
+
+    function toggle(source) {
+        checkboxes = document.getElementsByName('foo');
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
+            checkboxes[i].checked = source.checked;
+        }
+    }
+    $(document).ready(function () {
+        $(".btnDemo").on('click', function () {
+            var currentRow = $(this).closest("tr");
+
+            var col1 = currentRow.text();
+            var str = currentRow.find("#emailid").text();
+            // var col2 = currentRow.find("td:eq(1)").text();
+            // var col3 = currentRow.find("td:eq(2)").text();
+
+            alert(str);
+            // $('#customerView').modal('show');
+
+        })
+    })
     function myFunction() {
         var input, filter, table, tr, td, i, txtValue;
         input = document.getElementById("myInput");
@@ -418,12 +1194,10 @@
             td5 = tr[i].getElementsByTagName("td")[4];
             td6 = tr[i].getElementsByTagName("td")[5];
             td7 = tr[i].getElementsByTagName("td")[6];
-            td10 = tr[i].getElementsByTagName("td")[10];
-            td11 = tr[i].getElementsByTagName("td")[11];
-            td12 = tr[i].getElementsByTagName("td")[12];
-            td13 = tr[i].getElementsByTagName("td")[13];
-
-            if (td1 || td2 || td3 || td4 || td5 || td6 || td7 || td10) {
+            td8 = tr[i].getElementsByTagName("td")[7];
+            td9 = tr[i].getElementsByTagName("td")[8];
+            td13 = tr[i].getElementsByTagName("td")[12];
+            if (td1 || td2 || td3 || td4 || td5 || td6 || td7 || td8 || td9 || td13) {
                 txtValue1 = td1.textContent || td1.innerText;
                 txtValue2 = td2.textContent || td2.innerText;
                 txtValue3 = td3.textContent || td3.innerText;
@@ -431,18 +1205,15 @@
                 txtValue5 = td5.textContent || td5.innerText;
                 txtValue6 = td6.textContent || td6.innerText;
                 txtValue7 = td7.textContent || td7.innerText;
-                txtValue10 = td10.textContent || td10.innerText;
-                txtValue11 = td11.textContent || td11.innerText;
-                txtValue12 = td12.textContent || td12.innerText;
+                txtValue8 = td8.textContent || td8.innerText;
+                txtValue9 = td9.textContent || td9.innerText;
                 txtValue13 = td13.textContent || td13.innerText;
 
                 if ((txtValue1.toUpperCase().indexOf(filter) > -1) || (txtValue2.toUpperCase().indexOf(filter) > -1)
                     || (txtValue3.toUpperCase().indexOf(filter) > -1) || (txtValue4.toUpperCase().indexOf(filter) > -1)
                     || (txtValue5.toUpperCase().indexOf(filter) > -1) || (txtValue6.toUpperCase().indexOf(filter) > -1)
-                    || (txtValue7.toUpperCase().indexOf(filter) > -1) || (txtValue10.toUpperCase().indexOf(filter) > -1)
-                    || (txtValue11.toUpperCase().indexOf(filter) > -1) || (txtValue12.toUpperCase().indexOf(filter) > -1)
-                    || (txtValue13.toUpperCase().indexOf(filter) > -1)
-                ) {
+                    || (txtValue7.toUpperCase().indexOf(filter) > -1) || (txtValue8.toUpperCase().indexOf(filter) > -1)
+                    || (txtValue9.toUpperCase().indexOf(filter) > -1) || (txtValue13.toUpperCase().indexOf(filter) > -1)) {
                     tr[i].style.display = "";
                 } else {
 

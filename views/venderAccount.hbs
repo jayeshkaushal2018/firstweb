@@ -1,0 +1,142 @@
+{{>header}}
+<div class="sidebar active">
+    <div class="logo_content">
+        <div class="logo">
+            <box-icon type='solid' name='home'></box-icon>
+            <i class='bx bxs-home'></i>
+            <div class="logo_name">Tathastu Interio</div>
+        </div>
+        <i class='bx bx-menu' id="btn"></i>
+    </div>
+    <ul class="nav_list">
+        <li>
+            <a href="/dashboard">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Dashboard</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/employee/list">
+                <i class='bx bxs-user'></i>
+                <spam class="links_name">Employees</spam>
+            </a>
+        </li>
+        <li style="margin-top: 10px;">
+            <a href="/lead">
+                <i class='bx bx-grid-small'></i>
+                <spam class="links_name">Leads</spam>
+            </a>
+        </li>
+        <li>
+            <a href="/venderAccountAll" class="curr_page">
+                <i class='bx bx-grid-small' style="color:black"></i>
+                <spam class="links_name" style="color:black" ;>Ledger</spam>
+            </a>
+        </li>
+
+        <li class="row_li" style="margin-left: 40px; width: 150px;border-color: black;margin-top: 20px;">
+            <form action="/">
+                <select onchange="window.open(this.options[this.selectedIndex].value,'_top')"
+                    class="form-control selectpicker" style="color: white;background-color: black;">
+                    <option value="">Settings</option>
+                    <option value="/passwordReset">Password Reset</option>
+
+                </select>
+            </form>
+        </li>
+    </ul>
+
+    <div class="profile_content">
+
+        <div class="profile">
+            <div class="profile_details">
+                <!-- <img src="profile.jpg" alt=""> -->
+                <div class="name_job">
+                    <div class="name">jayesh kaushal</div>
+                    <div class="job"> web Designed</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container-lg" style="margin-left:250px;margin-right:20px">
+    <table class="table table-striped  emp_teable" style="margin-top: 20px">
+        <thead class="thead-dark">
+
+            <tr>
+                <th scope="col" style="text-align: end"> </th>
+                <th scope="col">
+                    <h3 style="text-align: end;">
+                        	
+							 {{data.fullName}}
+						  
+                    </h3>
+                </th>
+                <th scope="col" style="text-align: end"> <button type="button" class="btn btn-info "><a
+                            href="/addEntryVender" style="color: #fff;">
+                            <h4>+ Add Entry</h4>
+                        </a></button></th>
+
+
+            </tr>
+        </thead>
+
+    </table>
+    <div class="col-auto">
+        <div class="form-row">
+            	
+                
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="sr-only" for="inlineFormInputGroup">Username</label>
+               
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+<table class="table table-striped  emp_table " style=" margin-left: 15%;width:1430px;" id="myTable">
+
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Date</th>
+            <th scope="col">Cheque no</th>
+            <th scope="col">Type of Transaction</th>
+            <th scope="col">Debit Rs</th>
+            <th scope="col">Credit RS</th>
+            <th scope="col">Current Balance</th>
+            <th scope="col">previous Balance</th>
+           
+        </tr>
+         {{#each transact}}
+        <tr>
+            <td></td>
+            <td>{{this.date}}</td>
+            <td>{{this.transactionId}}</td>
+            <td>{{this.currtBalancecredit}}</td>
+            <td>{{this.currtBalanceDebit}}</td>
+            <td></td>
+            <td>21000</td>
+            <td>20000</td>
+        </tr>
+          {{/each}}
+    </thead>
+    <tbody>
+       
+
+
+
+
+</div>
+
+
+</div>
